@@ -1,4 +1,4 @@
-import { radians, degrees } from "./components/utilities.js";
+import { radians, clamp } from "./components/utilities.js";
 import { rotateGroup, levelGroup } from "./components/paperUtilities.js";
 import { makeCircle, dashedCircle } from "./components/planets.js";
 import { competencies } from "./data.js";
@@ -17,6 +17,11 @@ let background;
 let levelOneRadius;
 let levelTwoRadius;
 
+let leveOneMaxFontSize = 18;
+let levelTwoMaxFontSize = 13;
+let leveOneMinFontSize = 12;
+let levelTwoMinFontSize = 8;
+
 let planets = [];
 let rotationSpeed = 0.03;
 
@@ -31,7 +36,7 @@ window.onload = function () {
   prevHeight = height = paper.view.size.height;
 
   levelOneRadius = width / 7;
-  levelTwoRadius = width / 3;
+  levelTwoRadius = width / 4;
 
   background = new Path.Rectangle({
     center: view.bounds.center,
@@ -71,7 +76,7 @@ window.onload = function () {
     let x = r * Math.cos(angle);
     let y = r * Math.sin(angle);
 
-    let rectBg = new Color(1, 1, 1, 1);
+    let rectBg = new Color(1, 1, 1, 0.8);
 
     let circle = makeCircle(
       competency.title,
@@ -79,7 +84,7 @@ window.onload = function () {
       y,
       40,
       80,
-      18,
+      clamp(width / 80, levelTwoMinFontSize, levelTwoMaxFontSize),
       competency.color,
       rectBg,
       levelOne,
@@ -128,8 +133,6 @@ window.onload = function () {
   view.onResize = function (event) {
     width = paper.view.size.width;
     height = paper.view.size.height;
-
-    console.log(scaleObjects);
     scaleObjects.forEach((object) => {
       object.scale(width / prevWidth);
       object.position = view.bounds.center;

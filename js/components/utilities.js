@@ -20,3 +20,5 @@ export function dist(x1, y1, x2, y2) {
   let dy = y2 - y1;
   return Math.sqrt(dx * dx + dy * dy);
 }
+
+export const clamp = (num, min, max) => Math.min(Math.max(num, min), max);
