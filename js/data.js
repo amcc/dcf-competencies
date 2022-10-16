@@ -18,10 +18,10 @@ export const competencies = [
     title: "Creating",
     color: "#FCA500",
     children: [
-      { title: "2D Design", color: "#FE196B" },
-      { title: "3D Design", color: "#FE196B" },
-      { title: "4D Design", color: "#FE196B" },
-      { title: "Computational Design", color: "#FE196B" },
+      { title: "2D Design", color: "#FCA500" },
+      { title: "3D Design", color: "#FCA500" },
+      { title: "4D Design", color: "#FCA500" },
+      { title: "Computational Design", color: "#FCA500" },
     ],
   },
   {

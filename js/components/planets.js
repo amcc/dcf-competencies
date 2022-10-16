@@ -1,4 +1,4 @@
-import { dragGroup } from "./paperUtilities.js";
+import { dragGroup, tweenRotation } from "./paperUtilities.js";
 import { grabHandle } from "./elements.js";
 
 let labelSpacing = 90;
@@ -14,7 +14,8 @@ export function makeCircle(
   rectBg,
   parent,
   planets,
-  system = parent
+  system = parent,
+  rotationAngle = 0
 ) {
   let circleGroup = new Group();
   circleGroup.parent = parent;
@@ -53,6 +54,9 @@ export function makeCircle(
     fillColor: "black",
   });
 
+  circle.onMouseUp = function (e) {
+    tweenRotation(rotationAngle, 1000, system, planets);
+  };
   circle.onMouseEnter = function (e) {
     document.getElementById("paperCanvas").style.cursor = "pointer";
     circle.fillColor = "grey";

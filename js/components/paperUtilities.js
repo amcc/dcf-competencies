@@ -7,10 +7,10 @@ export function dragGroup(e, group, planets) {
   // find the angle between drag point and group centre
   let delta = e.point.subtract(group.position);
   let rotation = delta.angle - group.storeAngle;
-  rotateGroup(group, rotation, planets);
+  rotateGroup(rotation, group, planets);
 }
 
-export function rotateGroup(group, rotation, planets) {
+export function rotateGroup(rotation, group, planets) {
   group.rotation = rotation;
   // counter rotate the children
   //   group.children.forEach((child) => {
@@ -19,6 +19,24 @@ export function rotateGroup(group, rotation, planets) {
   if (planets) {
     planets.forEach((planet) => {
       planet.rotation = -rotation;
+    });
+  }
+}
+
+export function tweenRotation(rotation, time, group, planets) {
+  //   group.rotation = rotation;
+  group.tween(
+    { rotation: group.rotation },
+    { rotation: rotation },
+    { duration: time, easing: "easeInOutQuad" }
+  );
+  if (planets) {
+    planets.forEach((planet) => {
+      planet.tween(
+        { rotation: planet.rotation },
+        { rotation: -rotation },
+        { duration: time, easing: "easeInOutQuad" }
+      );
     });
   }
 }

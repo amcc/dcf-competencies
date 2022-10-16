@@ -1,4 +1,4 @@
-import { radians, clamp } from "./components/utilities.js";
+import { radians, degrees, clamp } from "./components/utilities.js";
 import { rotateGroup, levelGroup } from "./components/paperUtilities.js";
 import { makeCircle, dashedCircle } from "./components/planets.js";
 import { competencies } from "./data.js";
@@ -75,8 +75,9 @@ window.onload = function () {
     let r = levelOneRadius;
     let x = r * Math.cos(angle);
     let y = r * Math.sin(angle);
-
     let rectBg = new Color(1, 1, 1, 0.8);
+
+    const rotationAngle = a > 0 ? 360 - degrees(angle) : 0;
 
     let circle = makeCircle(
       competency.title,
@@ -88,7 +89,9 @@ window.onload = function () {
       competency.color,
       rectBg,
       levelOne,
-      planets
+      planets,
+      levelOne,
+      rotationAngle
     );
 
     planets.push(circle);
@@ -96,6 +99,16 @@ window.onload = function () {
 
   competencies.forEach((competency, i) => {
     competency.children?.forEach((child, j) => {
+      if (!child) return;
+
+      console.log(
+        child.title,
+        360 - degrees(radians(360 / competencies.length) * i)
+      );
+
+      const rotationAngle =
+        i > 0 ? 360 - degrees(radians(360 / competencies.length) * i) : 0;
+
       let angle =
         radians(360 / competencies.length) * i +
         radians(360 / competencies.length / competency.children.length) * j;
@@ -115,7 +128,8 @@ window.onload = function () {
         rectBg,
         levelTwo,
         planets,
-        levelOne
+        levelOne,
+        rotationAngle
       );
 
       planets.push(circle);
@@ -126,7 +140,7 @@ window.onload = function () {
 
   view.onFrame = function (event) {
     if (!levelOne.dragging) {
-      rotateGroup(levelOne, levelOne.rotation + rotationSpeed, planets);
+      // rotateGroup(levelOne.rotation + rotationSpeed, levelOne, planets);
     }
   };
 
