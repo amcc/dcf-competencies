@@ -97,6 +97,18 @@ export function tweenPosition(position, time, group, thenFunction = null) {
   }
 }
 
+export function tweenOpacity(opacity, time, group, thenFunction = null) {
+  console.log(group);
+  let tween = group.tween(
+    { opacity: group.opacity },
+    { opacity: opacity },
+    { duration: time, easing: "easeInOutQuad" }
+  );
+  if (thenFunction) {
+    tween.then(thenFunction);
+  }
+}
+
 export function levelGroup(x, y, name, parent) {
   let levelGroup = new Group();
   levelGroup.name = name;

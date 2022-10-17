@@ -12,10 +12,12 @@ let dragAngle;
 let levelOneAngle;
 let levelOne;
 let levelTwo;
+let levelThree;
 let background;
 
 let levelOneRadius;
 let levelTwoRadius;
+let levelThreeRadius;
 
 let levelOneMaxFontSize = 18;
 let levelTwoMaxFontSize = 13;
@@ -23,6 +25,7 @@ let levelOneMinFontSize = 12;
 let levelTwoMinFontSize = 20;
 
 let planets = [];
+let moons = [];
 let rotationSpeed = 0.03;
 
 let scaleObjects;
@@ -79,8 +82,9 @@ window.onload = function () {
   };
 
   function makeSystem() {
-    levelOneRadius = width / 6;
-    levelTwoRadius = width / 2.5;
+    levelOneRadius = width / 7.5;
+    levelTwoRadius = width / 3.7;
+    levelThreeRadius = width / 2.4;
 
     background = new Path.Rectangle({
       center: view.bounds.center,
@@ -110,10 +114,22 @@ window.onload = function () {
       containerGroup
     );
 
+    let dash3 = dashedCircle(
+      view.bounds.center,
+      levelThreeRadius,
+      "#9B96F4",
+      1,
+      "round",
+      [10, 12],
+      containerGroup
+    );
+
     levelOne = levelGroup(0, 0, "levelOne", containerGroup);
     levelTwo = levelGroup(0, 0, "levelTwo", levelOne);
+    levelThree = levelGroup(0, 0, "levelThree", levelOne);
+    levelThree.opacity = 0;
 
-    scaleObjects = [dash1, dash2, levelOne, background];
+    scaleObjects = [dash1, dash2, dash3, levelOne, background];
 
     levelOne.position = view.bounds.center;
 
@@ -126,7 +142,7 @@ window.onload = function () {
 
       const rotationAngle = 360 - degrees(angle);
 
-      let radius = width / 20;
+      let radius = width / 27;
       let labelSpacing = radius * 1.8;
 
       let circle = makeCircle(
@@ -134,6 +150,7 @@ window.onload = function () {
         x,
         y,
         radius,
+        "center",
         labelSpacing,
         levelOneMinFontSize,
         competency.color,
@@ -164,7 +181,7 @@ window.onload = function () {
 
         let rectBg = new Color(1, 0, 1, 0);
 
-        let radius = width / 30;
+        let radius = width / 50;
         let labelSpacing = radius * 1.8;
 
         let circle = makeCircle(
@@ -172,6 +189,7 @@ window.onload = function () {
           x,
           y,
           radius,
+          "center",
           labelSpacing,
           levelTwoMaxFontSize,
           child.color,
@@ -184,6 +202,57 @@ window.onload = function () {
         );
 
         planets.push(circle);
+      });
+    });
+
+    competencies.forEach((competency, i) => {
+      competency.children?.forEach((child, j) => {
+        if (!child) return;
+        console.log(child);
+        child.children?.forEach((grandChild, k) => {
+          if (!grandChild) return;
+          const rotationAngle =
+            360 - degrees(radians(360 / competencies.length) * i);
+
+          let angle =
+            radians(360 / competencies.length) * i +
+            radians(360 / competencies.length / competency.children.length) *
+              j +
+            radians(
+              360 /
+                competencies.length /
+                competency.children.length /
+                child.children.length
+            ) *
+              k;
+          let r = levelThreeRadius;
+          let x = r * Math.cos(angle);
+          let y = r * Math.sin(angle);
+
+          let rectBg = new Color(1, 0, 1, 0);
+
+          let radius = width / 100;
+          let labelSpacing = radius * 1.8;
+
+          let circle = makeCircle(
+            grandChild.title,
+            x,
+            y,
+            radius,
+            "left",
+            labelSpacing,
+            levelTwoMaxFontSize,
+            child.color,
+            rectBg,
+            levelThree,
+            planets,
+            levelOne,
+            containerGroup,
+            rotationAngle
+          );
+
+          planets.push(circle);
+        });
       });
     });
   }

@@ -3,6 +3,7 @@ import {
   tweenRotation,
   tweenElement,
   tweenPosition,
+  tweenOpacity,
 } from "./paperUtilities.js";
 import { grabHandle } from "./elements.js";
 
@@ -14,6 +15,7 @@ export function makeCircle(
   x,
   y,
   r,
+  align = "center",
   labelSpacing,
   fontSize,
   color,
@@ -33,10 +35,20 @@ export function makeCircle(
   rectangleGroup.parent = circleGroup;
 
   let rectY = y + labelSpacing;
+  let rectX = x;
+  if (align === "center") {
+    rectY = y + labelSpacing;
+    rectX = x;
+  } else if (align === "left") {
+    console.log("yea");
+    rectY = y;
+    rectX = x + labelSpacing;
+  }
+
   let rectWidth = title.length * fontSize * 0.8;
 
   let rect = new Path.Rectangle({
-    center: [x, rectY],
+    center: [rectX, rectY],
     size: [200, fontSize * 3],
     fillColor: rectBg,
     parent: rectangleGroup,
@@ -52,12 +64,12 @@ export function makeCircle(
     parent: circleGroup,
   });
   var text = new PointText({
-    position: [x, rectY + 6],
+    position: [rectX, rectY + 6],
     parent: rectangleGroup,
     content: title,
     fontSize: fontSize,
     fontFamily: "Poppins",
-    justification: "center",
+    justification: align,
     fillColor: "black",
   });
 
@@ -70,9 +82,12 @@ export function makeCircle(
     // if (!system.offset) {
     // }
     if (parent.name == "levelTwo") {
+      console.log(system);
       tweenPosition([-view.bounds.width / 3, 0], rotationTime, containerGroup);
+      tweenOpacity(1, rotationTime, system.children.levelThree);
     } else {
       tweenPosition([0, 0], rotationTime, containerGroup);
+      tweenOpacity(0, rotationTime, system.children.levelThree);
     }
   };
   circle.onMouseEnter = function (e) {
