@@ -19,13 +19,15 @@ let levelTwoRadius;
 
 let leveOneMaxFontSize = 18;
 let levelTwoMaxFontSize = 13;
-let leveOneMinFontSize = 12;
+let levelOneMinFontSize = 12;
 let levelTwoMinFontSize = 8;
 
 let planets = [];
 let rotationSpeed = 0.03;
 
 let scaleObjects;
+
+let textInfo;
 
 paper.install(window);
 window.onload = function () {
@@ -36,7 +38,7 @@ window.onload = function () {
   prevHeight = height = paper.view.size.height;
 
   levelOneRadius = width / 7;
-  levelTwoRadius = width / 4;
+  levelTwoRadius = width / 3;
 
   background = new Path.Rectangle({
     center: view.bounds.center,
@@ -44,7 +46,7 @@ window.onload = function () {
     fillColor: "#F5F5F5",
   });
 
-  // level one
+  let containerGroup = levelGroup(0, 0, "containerGroup");
 
   let dash1 = dashedCircle(
     view.bounds.center,
@@ -52,21 +54,22 @@ window.onload = function () {
     "#9B96F4",
     1,
     "round",
-    [10, 12]
+    [10, 12],
+    containerGroup
   );
 
-  // level two
   let dash2 = dashedCircle(
     view.bounds.center,
     levelTwoRadius,
     "#9B96F4",
     1,
     "round",
-    [10, 12]
+    [10, 12],
+    containerGroup
   );
 
-  levelOne = levelGroup(0, 0);
-  levelTwo = levelGroup(0, 0, levelOne);
+  levelOne = levelGroup(0, 0, "levelOne", containerGroup);
+  levelTwo = levelGroup(0, 0, "levelTwo", levelOne);
 
   scaleObjects = [dash1, dash2, levelOne, background];
 
@@ -77,20 +80,21 @@ window.onload = function () {
     let y = r * Math.sin(angle);
     let rectBg = new Color(1, 1, 1, 0.8);
 
-    const rotationAngle = a > 0 ? 360 - degrees(angle) : 0;
+    const rotationAngle = 360 - degrees(angle);
 
     let circle = makeCircle(
       competency.title,
       x,
       y,
       40,
-      80,
-      clamp(width / 80, levelTwoMinFontSize, levelTwoMaxFontSize),
+      68,
+      clamp(width / 80, levelOneMinFontSize, levelTwoMaxFontSize),
       competency.color,
       rectBg,
       levelOne,
       planets,
       levelOne,
+      containerGroup,
       rotationAngle
     );
 
@@ -101,13 +105,8 @@ window.onload = function () {
     competency.children?.forEach((child, j) => {
       if (!child) return;
 
-      console.log(
-        child.title,
-        360 - degrees(radians(360 / competencies.length) * i)
-      );
-
       const rotationAngle =
-        i > 0 ? 360 - degrees(radians(360 / competencies.length) * i) : 0;
+        360 - degrees(radians(360 / competencies.length) * i);
 
       let angle =
         radians(360 / competencies.length) * i +
@@ -116,19 +115,20 @@ window.onload = function () {
       let x = r * Math.cos(angle);
       let y = r * Math.sin(angle);
 
-      let rectBg = new Color(1, 1, 1, 0.01);
+      let rectBg = new Color(1, 0, 1, 0);
       let circle = makeCircle(
         child.title,
         x,
         y,
         20,
         40,
-        13,
+        clamp(width / 80, levelTwoMinFontSize, levelTwoMaxFontSize),
         child.color,
         rectBg,
         levelTwo,
         planets,
         levelOne,
+        containerGroup,
         rotationAngle
       );
 
@@ -138,10 +138,20 @@ window.onload = function () {
 
   levelOne.position = view.bounds.center;
 
+  textInfo = new PointText({
+    position: [10, 40],
+    content: "info",
+    fontSize: 10,
+    fontFamily: "Poppins",
+    justification: "left",
+    fillColor: "black",
+  });
+
   view.onFrame = function (event) {
     if (!levelOne.dragging) {
       // rotateGroup(levelOne.rotation + rotationSpeed, levelOne, planets);
     }
+    textInfo.content = `rotation: ${levelOne.rotation}`;
   };
 
   view.onResize = function (event) {

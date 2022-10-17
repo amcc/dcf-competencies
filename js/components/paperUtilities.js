@@ -24,14 +24,61 @@ export function rotateGroup(rotation, group, planets) {
 }
 
 export function tweenRotation(rotation, time, group, planets) {
-  //   group.rotation = rotation;
-  group.tween(
+  if (
+    (group.rotation === 0 || group.rotation === 360) &&
+    (rotation === 360 || rotation === 0)
+  )
+    return;
+
+  if (group.rotation < 0) Math.abs((group.rotation = 360 + group.rotation));
+  console.log("start", group.rotation, "end", rotation);
+  let tween = group.tween(
     { rotation: group.rotation },
     { rotation: rotation },
     { duration: time, easing: "easeInOutQuad" }
   );
   if (planets) {
-    planets.forEach((planet) => {
+    planets.forEach((planet, i) => {
+      if (planet.rotation < 0)
+        Math.abs((planet.rotation = 360 + planet.rotation));
+
+      if (i === 0)
+        console.log(
+          "planet-start",
+          planet.rotation,
+          "planet-end",
+          rotation - group.rotation
+        );
+
+      let planetTween = planet.tween(
+        { rotation: planet.rotation },
+        { rotation: planet.rotation - (rotation - group.rotation) },
+        { duration: time, easing: "easeInOutQuad" }
+      );
+    });
+  }
+}
+
+export function tweenElement(
+  time,
+  group,
+  planets,
+  rotation = null,
+  position = null
+) {
+  const diff = rotation - group.rotation;
+  console.log("rot diff", group.rotation, rotation, diff);
+  // if (group.rotation < 0) {
+  //   rotation = rotation - group.rotation;
+  // }
+  group.tween(
+    { rotation: group.rotation, position: group.position },
+    { rotation: rotation, position: position },
+    { duration: time, easing: "easeInOutQuad" }
+  );
+  if (planets) {
+    planets.forEach((planet, i) => {
+      i === 0 && console.log("planet diff", planet.rotation, -rotation);
       planet.tween(
         { rotation: planet.rotation },
         { rotation: -rotation },
@@ -41,11 +88,24 @@ export function tweenRotation(rotation, time, group, planets) {
   }
 }
 
-export function levelGroup(x, y, parent) {
+export function tweenPosition(position, time, group, thenFunction = null) {
+  let tween = group.tween(
+    { position: group.position },
+    { position: position },
+    { duration: time, easing: "easeInOutQuad" }
+  );
+  if (thenFunction) {
+    tween.then(thenFunction);
+  }
+}
+
+export function levelGroup(x, y, name, parent) {
   let levelGroup = new Group();
+  levelGroup.name = name;
   levelGroup.pivot = [x, y];
   levelGroup.applyMatrix = false;
   levelGroup.dragging = false;
+  levelGroup.offset = false;
 
   if (parent) {
     levelGroup.parent = parent;

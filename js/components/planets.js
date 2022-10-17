@@ -1,7 +1,13 @@
-import { dragGroup, tweenRotation } from "./paperUtilities.js";
+import {
+  dragGroup,
+  tweenRotation,
+  tweenElement,
+  tweenPosition,
+} from "./paperUtilities.js";
 import { grabHandle } from "./elements.js";
 
 let labelSpacing = 90;
+let rotationTime = 2000;
 
 export function makeCircle(
   title,
@@ -15,6 +21,7 @@ export function makeCircle(
   parent,
   planets,
   system = parent,
+  containerGroup,
   rotationAngle = 0
 ) {
   let circleGroup = new Group();
@@ -26,11 +33,11 @@ export function makeCircle(
   rectangleGroup.parent = circleGroup;
 
   let rectY = y + labelSpacing;
-  let rectWidth = title.length * 13 + 30;
+  let rectWidth = title.length * fontSize * 0.8;
 
   let rect = new Path.Rectangle({
     center: [x, rectY],
-    size: [rectWidth, 50],
+    size: [200, fontSize * 3],
     fillColor: rectBg,
     parent: rectangleGroup,
   });
@@ -54,8 +61,19 @@ export function makeCircle(
     fillColor: "black",
   });
 
+  rect.bounds.width = text.bounds.width + 20;
+  rect.position = text.position;
+
   circle.onMouseUp = function (e) {
-    tweenRotation(rotationAngle, 1000, system, planets);
+    // console.log("at", system.rotation, "goto", rotationAngle);
+    tweenRotation(rotationAngle, rotationTime, system, planets);
+    // if (!system.offset) {
+    // }
+    if (parent.name == "levelTwo") {
+      tweenPosition([-view.bounds.width / 3, 0], rotationTime, containerGroup);
+    } else {
+      tweenPosition([0, 0], rotationTime, containerGroup);
+    }
   };
   circle.onMouseEnter = function (e) {
     document.getElementById("paperCanvas").style.cursor = "pointer";
