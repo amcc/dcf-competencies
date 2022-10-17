@@ -17,10 +17,10 @@ let background;
 let levelOneRadius;
 let levelTwoRadius;
 
-let leveOneMaxFontSize = 18;
+let levelOneMaxFontSize = 18;
 let levelTwoMaxFontSize = 13;
 let levelOneMinFontSize = 12;
-let levelTwoMinFontSize = 8;
+let levelTwoMinFontSize = 20;
 
 let planets = [];
 let rotationSpeed = 0.03;
@@ -37,95 +37,108 @@ window.onload = function () {
   prevWidth = width = paper.view.size.width;
   prevHeight = height = paper.view.size.height;
 
-  levelOneRadius = width / 7;
-  levelTwoRadius = width / 3;
+  makeSystem();
 
-  background = new Path.Rectangle({
-    center: view.bounds.center,
-    size: [width * 10, height * 10],
-    fillColor: "#F5F5F5",
-  });
+  // textInfo = new PointText({
+  //   position: [10, 40],
+  //   content: "info",
+  //   fontSize: 10,
+  //   fontFamily: "Poppins",
+  //   justification: "left",
+  //   fillColor: "black",
+  // });
 
-  let containerGroup = levelGroup(0, 0, "containerGroup");
+  view.onFrame = function (event) {
+    if (!levelOne.dragging) {
+      // rotateGroup(levelOne.rotation + rotationSpeed, levelOne, planets);
+    }
+    // textInfo.content = `rotation: ${levelOne.rotation}`;
+  };
 
-  let dash1 = dashedCircle(
-    view.bounds.center,
-    levelOneRadius,
-    "#9B96F4",
-    1,
-    "round",
-    [10, 12],
-    containerGroup
-  );
+  view.onResize = function (event) {
+    width = paper.view.size.width;
+    height = paper.view.size.height;
+    // scaleObjects.forEach((object) => {
+    //   object.scale(width / prevWidth);
+    //   object.position = view.bounds.center;
+    // });
 
-  let dash2 = dashedCircle(
-    view.bounds.center,
-    levelTwoRadius,
-    "#9B96F4",
-    1,
-    "round",
-    [10, 12],
-    containerGroup
-  );
+    prevWidth = paper.view.size.width;
+    prevHeight = paper.view.size.height;
 
-  levelOne = levelGroup(0, 0, "levelOne", containerGroup);
-  levelTwo = levelGroup(0, 0, "levelTwo", levelOne);
+    paper.project.activeLayer.removeChildren();
 
-  scaleObjects = [dash1, dash2, levelOne, background];
+    // levelOne.removeChildren();
+    // levelTwo.removeChildren();
+    // levelOne.addChild(levelTwo);
+    makeSystem();
+  };
 
-  competencies.forEach((competency, a) => {
-    let angle = radians(360 / competencies.length) * a;
-    let r = levelOneRadius;
-    let x = r * Math.cos(angle);
-    let y = r * Math.sin(angle);
-    let rectBg = new Color(1, 1, 1, 0.8);
+  levelOne.onMouseUp = function (e) {
+    levelOne.dragging = false;
+  };
 
-    const rotationAngle = 360 - degrees(angle);
+  function makeSystem() {
+    levelOneRadius = width / 6;
+    levelTwoRadius = width / 2.5;
 
-    let circle = makeCircle(
-      competency.title,
-      x,
-      y,
-      40,
-      68,
-      clamp(width / 80, levelOneMinFontSize, levelTwoMaxFontSize),
-      competency.color,
-      rectBg,
-      levelOne,
-      planets,
-      levelOne,
-      containerGroup,
-      rotationAngle
+    background = new Path.Rectangle({
+      center: view.bounds.center,
+      size: [width * 10, height * 10],
+      fillColor: "#F5F5F5",
+    });
+
+    let containerGroup = levelGroup(0, 0, "containerGroup");
+
+    let dash1 = dashedCircle(
+      view.bounds.center,
+      levelOneRadius,
+      "#9B96F4",
+      1,
+      "round",
+      [10, 12],
+      containerGroup
     );
 
-    planets.push(circle);
-  });
+    let dash2 = dashedCircle(
+      view.bounds.center,
+      levelTwoRadius,
+      "#9B96F4",
+      1,
+      "round",
+      [10, 12],
+      containerGroup
+    );
 
-  competencies.forEach((competency, i) => {
-    competency.children?.forEach((child, j) => {
-      if (!child) return;
+    levelOne = levelGroup(0, 0, "levelOne", containerGroup);
+    levelTwo = levelGroup(0, 0, "levelTwo", levelOne);
 
-      const rotationAngle =
-        360 - degrees(radians(360 / competencies.length) * i);
+    scaleObjects = [dash1, dash2, levelOne, background];
 
-      let angle =
-        radians(360 / competencies.length) * i +
-        radians(360 / competencies.length / competency.children.length) * j;
-      let r = levelTwoRadius;
+    levelOne.position = view.bounds.center;
+
+    competencies.forEach((competency, a) => {
+      let angle = radians(360 / competencies.length) * a;
+      let r = levelOneRadius;
       let x = r * Math.cos(angle);
       let y = r * Math.sin(angle);
+      let rectBg = new Color(1, 1, 1, 0.8);
 
-      let rectBg = new Color(1, 0, 1, 0);
+      const rotationAngle = 360 - degrees(angle);
+
+      let radius = width / 20;
+      let labelSpacing = radius * 1.8;
+
       let circle = makeCircle(
-        child.title,
+        competency.title,
         x,
         y,
-        20,
-        40,
-        clamp(width / 80, levelTwoMinFontSize, levelTwoMaxFontSize),
-        child.color,
+        radius,
+        labelSpacing,
+        levelOneMinFontSize,
+        competency.color,
         rectBg,
-        levelTwo,
+        levelOne,
         planets,
         levelOne,
         containerGroup,
@@ -134,39 +147,44 @@ window.onload = function () {
 
       planets.push(circle);
     });
-  });
 
-  levelOne.position = view.bounds.center;
+    competencies.forEach((competency, i) => {
+      competency.children?.forEach((child, j) => {
+        if (!child) return;
 
-  textInfo = new PointText({
-    position: [10, 40],
-    content: "info",
-    fontSize: 10,
-    fontFamily: "Poppins",
-    justification: "left",
-    fillColor: "black",
-  });
+        const rotationAngle =
+          360 - degrees(radians(360 / competencies.length) * i);
 
-  view.onFrame = function (event) {
-    if (!levelOne.dragging) {
-      // rotateGroup(levelOne.rotation + rotationSpeed, levelOne, planets);
-    }
-    textInfo.content = `rotation: ${levelOne.rotation}`;
-  };
+        let angle =
+          radians(360 / competencies.length) * i +
+          radians(360 / competencies.length / competency.children.length) * j;
+        let r = levelTwoRadius;
+        let x = r * Math.cos(angle);
+        let y = r * Math.sin(angle);
 
-  view.onResize = function (event) {
-    width = paper.view.size.width;
-    height = paper.view.size.height;
-    scaleObjects.forEach((object) => {
-      object.scale(width / prevWidth);
-      object.position = view.bounds.center;
+        let rectBg = new Color(1, 0, 1, 0);
+
+        let radius = width / 30;
+        let labelSpacing = radius * 1.8;
+
+        let circle = makeCircle(
+          child.title,
+          x,
+          y,
+          radius,
+          labelSpacing,
+          levelTwoMaxFontSize,
+          child.color,
+          rectBg,
+          levelTwo,
+          planets,
+          levelOne,
+          containerGroup,
+          rotationAngle
+        );
+
+        planets.push(circle);
+      });
     });
-
-    prevWidth = paper.view.size.width;
-    prevHeight = paper.view.size.height;
-  };
-
-  levelOne.onMouseUp = function (e) {
-    levelOne.dragging = false;
-  };
+  }
 };

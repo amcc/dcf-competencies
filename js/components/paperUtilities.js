@@ -67,7 +67,6 @@ export function tweenElement(
   position = null
 ) {
   const diff = rotation - group.rotation;
-  console.log("rot diff", group.rotation, rotation, diff);
   // if (group.rotation < 0) {
   //   rotation = rotation - group.rotation;
   // }
@@ -78,7 +77,6 @@ export function tweenElement(
   );
   if (planets) {
     planets.forEach((planet, i) => {
-      i === 0 && console.log("planet diff", planet.rotation, -rotation);
       planet.tween(
         { rotation: planet.rotation },
         { rotation: -rotation },
