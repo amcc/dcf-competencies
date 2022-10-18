@@ -80,7 +80,11 @@ export function makeCircle(
     tweenRotation(rotationAngle, rotationTime, system, planets);
     // if (!system.offset) {
     // }
-    if (parent.name == "levelTwo" || title === "Being") {
+    if (
+      parent.name == "levelTwo" ||
+      title === "Being" ||
+      title === "Awareness"
+    ) {
       tweenPosition([-view.bounds.width / 3, 0], rotationTime, containerGroup);
       tweenOpacity(1, rotationTime, system.children.levelThree);
       console.log("clicked", e.target);

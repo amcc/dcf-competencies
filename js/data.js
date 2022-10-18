@@ -48,6 +48,27 @@ export const competencies = [
   {
     title: "Awareness",
     color: "#FE196B",
+    children: [
+      {
+        // title: "awareness kids",
+        // color: "#A0EC32",
+        children: [
+          { title: "Situated awareness", color: "#FE196B" },
+          {
+            title: "Embodied awareness",
+            color: "#FE196B",
+          },
+          {
+            title: "Tangible awareness",
+            color: "#FE196B",
+          },
+          {
+            title: "Process awareness",
+            color: "#FE196B",
+          },
+        ],
+      },
+    ],
   },
 
   {
