@@ -36,7 +36,7 @@ paper.install(window);
 window.onload = function () {
   //paper setup
   paper.setup("paperCanvas");
-  console.log(paper);
+  // console.log(paper);
   prevWidth = width = paper.view.size.width;
   prevHeight = height = paper.view.size.height;
 
@@ -133,8 +133,8 @@ window.onload = function () {
 
     levelOne.position = view.bounds.center;
 
-    competencies.forEach((competency, a) => {
-      let angle = radians(360 / competencies.length) * a;
+    competencies.forEach((competency, i) => {
+      let angle = radians(360 / competencies.length) * i;
       let r = levelOneRadius;
       let x = r * Math.cos(angle);
       let y = r * Math.sin(angle);
@@ -163,9 +163,6 @@ window.onload = function () {
       );
 
       planets.push(circle);
-    });
-
-    competencies.forEach((competency, i) => {
       competency.children?.forEach((child, j) => {
         if (!child) return;
 
@@ -187,31 +184,26 @@ window.onload = function () {
         let radius = width / 50;
         let labelSpacing = radius * 1.8;
 
-        let circle = makeCircle(
-          child.title,
-          x,
-          y,
-          radius,
-          "center",
-          labelSpacing,
-          levelTwoMaxFontSize,
-          child.color,
-          rectBg,
-          levelTwo,
-          planets,
-          levelOne,
-          containerGroup,
-          rotationAngle
-        );
+        if (child.title) {
+          let circle = makeCircle(
+            child.title,
+            x,
+            y,
+            radius,
+            "center",
+            labelSpacing,
+            levelTwoMaxFontSize,
+            child.color,
+            rectBg,
+            levelTwo,
+            planets,
+            levelOne,
+            containerGroup,
+            rotationAngle
+          );
+          planets.push(circle);
+        }
 
-        planets.push(circle);
-      });
-    });
-
-    competencies.forEach((competency, i) => {
-      competency.children?.forEach((child, j) => {
-        if (!child) return;
-        console.log(child);
         child.children?.forEach((grandChild, k) => {
           if (!grandChild) return;
           const rotationAngle =
@@ -245,7 +237,7 @@ window.onload = function () {
             "left",
             labelSpacing,
             levelTwoMaxFontSize,
-            child.color,
+            grandChild.color,
             rectBg,
             levelThree,
             planets,

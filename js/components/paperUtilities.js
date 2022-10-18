@@ -31,7 +31,7 @@ export function tweenRotation(rotation, time, group, planets) {
     return;
 
   if (group.rotation < 0) Math.abs((group.rotation = 360 + group.rotation));
-  console.log("start", group.rotation, "end", rotation);
+  // console.log("start", group.rotation, "end", rotation);
   let tween = group.tween(
     { rotation: group.rotation },
     { rotation: rotation },
@@ -42,13 +42,13 @@ export function tweenRotation(rotation, time, group, planets) {
       if (planet.rotation < 0)
         Math.abs((planet.rotation = 360 + planet.rotation));
 
-      if (i === 0)
-        console.log(
-          "planet-start",
-          planet.rotation,
-          "planet-end",
-          rotation - group.rotation
-        );
+      // if (i === 0)
+      // console.log(
+      //   "planet-start",
+      //   planet.rotation,
+      //   "planet-end",
+      //   rotation - group.rotation
+      // );
 
       let planetTween = planet.tween(
         { rotation: planet.rotation },
@@ -98,7 +98,7 @@ export function tweenPosition(position, time, group, thenFunction = null) {
 }
 
 export function tweenOpacity(opacity, time, group, thenFunction = null) {
-  console.log(group);
+  // console.log(group);
   let tween = group.tween(
     { opacity: group.opacity },
     { opacity: opacity },

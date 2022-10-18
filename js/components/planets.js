@@ -40,7 +40,6 @@ export function makeCircle(
     rectY = y + labelSpacing;
     rectX = x;
   } else if (align === "left") {
-    console.log("yea");
     rectY = y;
     rectX = x + labelSpacing;
   }
@@ -81,10 +80,10 @@ export function makeCircle(
     tweenRotation(rotationAngle, rotationTime, system, planets);
     // if (!system.offset) {
     // }
-    if (parent.name == "levelTwo") {
-      console.log(system);
+    if (parent.name == "levelTwo" || title === "Being") {
       tweenPosition([-view.bounds.width / 3, 0], rotationTime, containerGroup);
       tweenOpacity(1, rotationTime, system.children.levelThree);
+      console.log("clicked", e.target);
     } else {
       tweenPosition([0, 0], rotationTime, containerGroup);
       tweenOpacity(0, rotationTime, system.children.levelThree);

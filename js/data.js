@@ -3,9 +3,45 @@ export const competencies = [
     title: "Thinking",
     color: "#009AFE",
     children: [
-      { title: "Strategies", color: "#009AFE" },
-      { title: "Micro/Meso/Macro", color: "#009AFE" },
-      { title: "Kineasthetic", color: "#009AFE" },
+      {
+        title: "Strategies",
+        color: "#009AFE",
+        children: [
+          {
+            title: "Synthesis",
+            color: "#009AFE",
+          },
+          { title: "Pragmatic Thinking", color: "#009AFE" },
+          { title: "Critical Thinking", color: "#009AFE" },
+          { title: "Conceptual Thinking", color: "#009AFE" },
+        ],
+      },
+      {
+        title: "Micro/Meso/Macro",
+        color: "#009AFE",
+        children: [
+          {
+            title: "Sustainable Thiking",
+            color: "#009AFE",
+          },
+          { title: "Futures Thinking", color: "#009AFE" },
+          { title: "Systems Thinking", color: "#009AFE" },
+          { title: "Scalar Thinking", color: "#009AFE" },
+        ],
+      },
+      {
+        title: "Kineasthetic",
+        color: "#009AFE",
+        children: [
+          {
+            title: "Temporal Thinking",
+            color: "#009AFE",
+          },
+          { title: "Spacial Thinking", color: "#009AFE" },
+          { title: "3D Thinking (object)", color: "#009AFE" },
+          { title: "Visual Thinking", color: "#009AFE" },
+        ],
+      },
     ],
   },
 
@@ -18,10 +54,58 @@ export const competencies = [
     title: "Creating",
     color: "#FCA500",
     children: [
-      { title: "2D Design", color: "#FCA500" },
-      { title: "3D Design", color: "#FCA500" },
-      { title: "4D Design", color: "#FCA500" },
-      { title: "Computational Design", color: "#FCA500" },
+      {
+        title: "2D Design",
+        color: "#FCA500",
+        children: [
+          {
+            title: "Visual design development",
+            color: "#FCA500",
+          },
+          { title: "Visualization techniques", color: "#FCA500" },
+          { title: "Digital visualization techniques", color: "#FCA500" },
+        ],
+      },
+      {
+        title: "3D Design",
+        color: "#FCA500",
+        children: [
+          {
+            title: "Form development",
+            color: "#FCA500",
+          },
+          { title: "Fabrication techniques", color: "#FCA500" },
+          { title: "Digital fabrication techniques", color: "#FCA500" },
+        ],
+      },
+      {
+        title: "4D Design",
+        color: "#FCA500",
+        children: [
+          {
+            title: "Interaction design",
+            color: "#FCA500",
+          },
+          { title: "User experience design", color: "#FCA500" },
+          { title: "Service design", color: "#FCA500" },
+
+          { title: "Systems design", color: "#FCA500" },
+        ],
+      },
+      {
+        title: "Computational Design",
+        color: "#FCA500",
+        children: [
+          {
+            title: "Creative coding",
+            color: "#FCA500",
+          },
+          { title: "Data analysis", color: "#FCA500" },
+          { title: "Systems integration", color: "#FCA500" },
+
+          { title: "Physical computing", color: "#FCA500" },
+        ],
+      },
     ],
   },
   {
@@ -81,5 +165,24 @@ export const competencies = [
   {
     title: "Being",
     color: "#A0EC32",
+    children: [
+      {
+        // title: "being kids",
+        // color: "#A0EC32",
+        children: [
+          { title: "Flexible", color: "#A0EC32" },
+          {
+            title: "Creative Confident",
+            color: "#A0EC32",
+          },
+          {
+            title: "Self Learner",
+            color: "#A0EC32",
+          },
+          { title: "Original", color: "#A0EC32" },
+          { title: "Intrinsic motivation", color: "#A0EC32" },
+        ],
+      },
+    ],
   },
 ];
