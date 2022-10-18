@@ -1,3 +1,5 @@
+import { competencies } from "../data.js";
+
 export function dragGroup(e, group, planets) {
   // group position is determined by looking at its parent (the container too)
   const groupPos = group.position.add(group.parent.position);
@@ -108,6 +110,51 @@ export function tweenOpacity(opacity, time, group, thenFunction = null) {
   );
   if (thenFunction) {
     tween.then(thenFunction);
+  }
+}
+
+// understand which planet is clicked on and tween its moons
+// data shows the body that has been clicked on with info about its sun, planet, moons
+export function tweenBodies(data, system, target, thenFunction = null) {
+  const bodies = system.bodies;
+  let sun = data.sun;
+  let planet = data.planet;
+  let moon = data.moon;
+
+  let body;
+  if (sun !== undefined) body = bodies[sun];
+  if (planet !== undefined) body = bodies[sun].planets[planet];
+  if (moon !== undefined) body = bodies[sun].planets[planet].moons[moon];
+
+  // turn on planets
+  if (body.sun || (!body.sun && !body.planet)) {
+    system.planets.forEach((planet) => {
+      tweenOpacity(1, 1000, planet);
+    });
+    // show current planet
+  }
+  if (body.planet) {
+    // dim planets
+    system.planets.forEach((planet) => {
+      tweenOpacity(0.3, 1000, planet);
+    });
+    tweenOpacity(1, 1000, body.planet);
+    // show current planet
+  }
+
+  system.moons.forEach((moon) => {
+    tweenOpacity(0.05, 1000, moon);
+  });
+
+  body.moons?.forEach((moon) => {
+    tweenOpacity(1, 1000, moon);
+  });
+
+  // special cases for awareness and being
+  if (body.sun?.name == "Awareness" || body.sun?.name == "Being") {
+    body.planets[0].moons.forEach((moon) => {
+      tweenOpacity(1, 1000, moon);
+    });
   }
 }
 

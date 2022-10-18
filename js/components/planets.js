@@ -4,6 +4,7 @@ import {
   tweenElement,
   tweenPosition,
   tweenOpacity,
+  tweenBodies,
 } from "./paperUtilities.js";
 import { grabHandle } from "./elements.js";
 
@@ -21,12 +22,14 @@ export function makeCircle(
   color,
   rectBg,
   parent,
-  planets,
+  subBodies,
   system = parent,
   containerGroup,
-  rotationAngle = 0
+  rotationAngle = 0,
+  data = {}
 ) {
   let circleGroup = new Group();
+  circleGroup.name = title;
   circleGroup.parent = parent;
   circleGroup.pivot = [x, y];
   circleGroup.applyMatrix = false;
@@ -77,12 +80,12 @@ export function makeCircle(
     rect.position = text.position;
 
     circle.onMouseUp = function (e) {
-      // console.log("at", system.rotation, "goto", rotationAngle);
-      tweenRotation(rotationAngle, rotationTime, system, planets);
-      // if (!system.offset) {
-      // }
+      tweenRotation(rotationAngle, rotationTime, system, subBodies);
+      tweenBodies(data, system, e.target);
+
       if (
         parent.name == "levelTwo" ||
+        parent.name == "levelThree" ||
         title === "Being" ||
         title === "Awareness"
       ) {
@@ -90,7 +93,6 @@ export function makeCircle(
         // system.pivot = newpos;
         tweenPosition(newpos, rotationTime, containerGroup);
         tweenOpacity(1, rotationTime, system.children.levelThree);
-        console.log("clicked", e.target);
       } else {
         let newpos = [0, 0];
         // system.pivot = newpos;
@@ -116,10 +118,10 @@ export function makeCircle(
     };
 
     // circle.onMouseDrag = function (e) {
-    //   dragGroup(e, system, planets);
+    //   dragGroup(e, system, subBodies);
     // };
     rectangleGroup.onMouseDrag = function (e) {
-      dragGroup(e, system, planets);
+      dragGroup(e, system, subBodies);
     };
   }
 

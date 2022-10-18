@@ -24,9 +24,12 @@ let levelTwoMaxFontSize = 13;
 let levelOneMinFontSize = 12;
 let levelTwoMinFontSize = 20;
 
-let planets = [];
+let subBodies = [];
 let bodies = [];
+let planets = [];
 let moons = [];
+let planetCount = 0;
+let moonCount = 0;
 let rotationSpeed = 0.03;
 
 let scaleObjects;
@@ -83,9 +86,9 @@ window.onload = function () {
   };
 
   function makeSystem() {
-    levelOneRadius = width / 7.5;
-    levelTwoRadius = width / 3.7;
-    levelThreeRadius = width / 2.4;
+    levelOneRadius = width / 7.8;
+    levelTwoRadius = width / 4;
+    levelThreeRadius = width / 2.7;
 
     background = new Path.Rectangle({
       center: view.bounds.center,
@@ -134,6 +137,16 @@ window.onload = function () {
 
     levelOne.position = view.bounds.center;
 
+    // count moons
+    competencies.forEach((competency, i) => {
+      competency.children?.forEach((child, j) => {
+        planetCount++;
+        child.children?.forEach((grandChild, k) => {
+          moonCount++;
+        });
+      });
+    });
+
     //make system
     competencies.forEach((competency, i) => {
       let angle = radians(360 / competencies.length) * i;
@@ -158,13 +171,15 @@ window.onload = function () {
         competency.color,
         rectBg,
         levelOne,
-        planets,
+        subBodies,
         levelOne,
         containerGroup,
-        rotationAngle
+        rotationAngle,
+        { sun: i }
       );
+      sun.systemType = "sun";
 
-      planets.push(sun);
+      subBodies.push(sun);
 
       bodies.push({
         sun: sun,
@@ -179,7 +194,8 @@ window.onload = function () {
 
         let angle =
           radians(360 / competencies.length) * i +
-          radians(360 / competencies.length / competency.children.length) * j;
+          radians(360 / competencies.length / competency.children.length) * j -
+          radians(24);
 
         const rotationAngle = 360 - degrees(angle);
 
@@ -204,11 +220,14 @@ window.onload = function () {
           child.color,
           rectBg,
           levelTwo,
-          planets,
+          subBodies,
           levelOne,
           containerGroup,
-          rotationAngle
+          rotationAngle,
+          { sun: i, planet: j }
         );
+        planet.systemType = "planet";
+        subBodies.push(planet);
         planets.push(planet);
 
         bodies[i].planets.push({
@@ -232,7 +251,8 @@ window.onload = function () {
                 competency.children.length /
                 child.children.length
             ) *
-              k;
+              k -
+            radians(33);
           let r = levelThreeRadius;
           let x = r * Math.cos(angle);
           let y = r * Math.sin(angle);
@@ -253,21 +273,23 @@ window.onload = function () {
             grandChild.color,
             rectBg,
             levelThree,
-            planets,
+            subBodies,
             levelOne,
             containerGroup,
-            rotationAngle
+            rotationAngle,
+            { sun: i, planet: j, moon: k }
           );
+          moon.systemType = "moon";
+          moons.push(moon);
+          subBodies.push(moon);
 
-          planets.push(moon);
-
-          console.log(i, i, k);
-
-          console.log(bodies[i]);
           bodies[i].planets[j].moons.push(moon);
         });
       });
     }); // made system
-    console.log(bodies);
+    levelOne.subBodies = subBodies;
+    levelOne.planets = planets;
+    levelOne.moons = moons;
+    levelOne.bodies = bodies;
   }
 };
