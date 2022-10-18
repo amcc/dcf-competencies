@@ -1,5 +1,9 @@
 import { radians, degrees, clamp } from "./components/utilities.js";
-import { rotateGroup, levelGroup } from "./components/paperUtilities.js";
+import {
+  rotateGroup,
+  levelGroup,
+  dragGroup,
+} from "./components/paperUtilities.js";
 import { makeCircle, dashedCircle } from "./components/planets.js";
 import { competencies } from "./data.js";
 
@@ -95,6 +99,27 @@ window.onload = function () {
       size: [width * 10, height * 10],
       fillColor: "#F5F5F5",
     });
+
+    let levelOneBackground = new Path.Rectangle({
+      center: view.bounds.center,
+      size: [width * 10, height * 10],
+      fillColor: "#F5F5F5",
+      opacity: 0,
+      parent: levelOne,
+    });
+
+    levelOneBackground.onMouseDrag = function (e) {
+      dragGroup(e, levelOne, subBodies);
+    };
+    levelOneBackground.onMouseUp = function (e) {
+      levelOne.dragging = false;
+    };
+    levelOneBackground.onMouseEnter = function (event) {
+      document.getElementById("paperCanvas").style.cursor = "grab";
+    };
+    levelOneBackground.onMouseLeave = function (event) {
+      document.getElementById("paperCanvas").style.cursor = "default";
+    };
 
     let containerGroup = levelGroup(0, 0, "containerGroup");
 
