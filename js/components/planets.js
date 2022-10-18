@@ -115,6 +115,9 @@ export function makeCircle(
       document.getElementById("paperCanvas").style.cursor = "default";
     };
 
+    // circle.onMouseDrag = function (e) {
+    //   dragGroup(e, system, planets);
+    // };
     rectangleGroup.onMouseDrag = function (e) {
       dragGroup(e, system, planets);
     };
