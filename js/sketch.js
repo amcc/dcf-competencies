@@ -169,12 +169,15 @@ window.onload = function () {
       competency.children?.forEach((child, j) => {
         if (!child) return;
 
-        const rotationAngle =
-          360 - degrees(radians(360 / competencies.length) * i);
+        // const rotationAngle =
+        //   360 - degrees(radians(360 / competencies.length) * i);
 
         let angle =
           radians(360 / competencies.length) * i +
           radians(360 / competencies.length / competency.children.length) * j;
+
+        const rotationAngle = 360 - degrees(angle);
+
         let r = levelTwoRadius;
         let x = r * Math.cos(angle);
         let y = r * Math.sin(angle);
