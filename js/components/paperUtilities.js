@@ -1,11 +1,13 @@
 export function dragGroup(e, group, planets) {
+  // group position is determined by looking at its parent (the container too)
+  const groupPos = group.position.add(group.parent.position);
   //only do this when you start to drag
   if (!group.dragging) {
     group.dragging = true;
-    group.storeAngle = e.point.subtract(group.position).angle - group.rotation;
+    group.storeAngle = e.point.subtract(groupPos).angle - group.rotation;
   }
   // find the angle between drag point and group centre
-  let delta = e.point.subtract(group.position);
+  let delta = e.point.subtract(groupPos);
   let rotation = delta.angle - group.storeAngle;
   rotateGroup(rotation, group, planets);
 }

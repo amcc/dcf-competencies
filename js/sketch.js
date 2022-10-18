@@ -25,6 +25,7 @@ let levelOneMinFontSize = 12;
 let levelTwoMinFontSize = 20;
 
 let planets = [];
+let bodies = [];
 let moons = [];
 let rotationSpeed = 0.03;
 
@@ -133,6 +134,7 @@ window.onload = function () {
 
     levelOne.position = view.bounds.center;
 
+    //make system
     competencies.forEach((competency, i) => {
       let angle = radians(360 / competencies.length) * i;
       let r = levelOneRadius;
@@ -145,7 +147,7 @@ window.onload = function () {
       let radius = width / 27;
       let labelSpacing = radius * 1.8;
 
-      let circle = makeCircle(
+      let sun = makeCircle(
         competency.title,
         x,
         y,
@@ -162,7 +164,13 @@ window.onload = function () {
         rotationAngle
       );
 
-      planets.push(circle);
+      planets.push(sun);
+
+      bodies.push({
+        sun: sun,
+        planets: [],
+      });
+
       competency.children?.forEach((child, j) => {
         if (!child) return;
 
@@ -184,25 +192,30 @@ window.onload = function () {
         let radius = width / 50;
         let labelSpacing = radius * 1.8;
 
-        if (child.title) {
-          let circle = makeCircle(
-            child.title,
-            x,
-            y,
-            radius,
-            "center",
-            labelSpacing,
-            levelTwoMaxFontSize,
-            child.color,
-            rectBg,
-            levelTwo,
-            planets,
-            levelOne,
-            containerGroup,
-            rotationAngle
-          );
-          planets.push(circle);
-        }
+        // if (child.title) {
+        let planet = makeCircle(
+          child.title,
+          x,
+          y,
+          radius,
+          "center",
+          labelSpacing,
+          levelTwoMaxFontSize,
+          child.color,
+          rectBg,
+          levelTwo,
+          planets,
+          levelOne,
+          containerGroup,
+          rotationAngle
+        );
+        planets.push(planet);
+
+        bodies[i].planets.push({
+          planet: planet,
+          moons: [],
+        });
+        // }
 
         child.children?.forEach((grandChild, k) => {
           if (!grandChild) return;
@@ -229,7 +242,7 @@ window.onload = function () {
           let radius = width / 100;
           let labelSpacing = radius * 1.8;
 
-          let circle = makeCircle(
+          let moon = makeCircle(
             grandChild.title,
             x,
             y,
@@ -246,9 +259,15 @@ window.onload = function () {
             rotationAngle
           );
 
-          planets.push(circle);
+          planets.push(moon);
+
+          console.log(i, i, k);
+
+          console.log(bodies[i]);
+          bodies[i].planets[j].moons.push(moon);
         });
       });
-    });
+    }); // made system
+    console.log(bodies);
   }
 };

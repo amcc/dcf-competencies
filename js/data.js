@@ -50,7 +50,7 @@ export const competencies = [
     color: "#FE196B",
     children: [
       {
-        // title: "awareness kids",
+        title: null,
         // color: "#A0EC32",
         children: [
           { title: "Situated awareness", color: "#FE196B" },
@@ -188,7 +188,7 @@ export const competencies = [
     color: "#A0EC32",
     children: [
       {
-        // title: "being kids",
+        title: null,
         // color: "#A0EC32",
         children: [
           { title: "Flexible", color: "#A0EC32" },
