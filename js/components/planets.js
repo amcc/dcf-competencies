@@ -68,6 +68,15 @@ export function makeCircle(
       fillColor: color,
       parent: circleGroup,
     });
+    let circleRing = new Path.Circle({
+      center: [x, y],
+      radius: r + 4,
+      strokeColor: color,
+      strokeWidth: 2,
+      parent: circleGroup,
+      opacity: 0,
+      parent: circleGroup,
+    });
     var text = new PointText({
       position: [rectX, rectY + 6],
       parent: rectangleGroup,
@@ -81,7 +90,7 @@ export function makeCircle(
     rect.bounds.width = text.bounds.width + 20;
     rect.position = text.position;
 
-    circle.onMouseUp = function (e) {
+    circleGroup.onMouseUp = function (e) {
       tweenRotation(rotationAngle, rotationTime, system, subBodies);
       tweenBodies(data, system, e.target);
 
@@ -97,13 +106,16 @@ export function makeCircle(
       }
       system.dragging = false;
     };
-    circle.onMouseEnter = function (e) {
+    circleGroup.onMouseEnter = function (e) {
       document.getElementById("paperCanvas").style.cursor = "pointer";
-      circle.fillColor = "grey";
+      // circle.fillColor = "grey";
+      // console.log(circle);
+      circleGroup.children[2].opacity = 1;
     };
-    circle.onMouseLeave = function (e) {
+    circleGroup.onMouseLeave = function (e) {
       document.getElementById("paperCanvas").style.cursor = "default";
-      circle.fillColor = color;
+      // circle.fillColor = color;
+      circleGroup.children[2].opacity = 0;
     };
 
     rectangleGroup.onMouseEnter = function (event) {
