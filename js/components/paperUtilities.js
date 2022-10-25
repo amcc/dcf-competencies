@@ -1,5 +1,44 @@
 import { competencies } from "../data.js";
 
+export function showCompetencies(system) {
+  let newpos = [-view.bounds.width / 3, 0];
+  // system.pivot = newpos;
+  tweenPosition(
+    newpos,
+    system.settings.rotationTime,
+    system.settings.container
+  );
+  tweenOpacity(1, system.settings.rotationTime, system.children.levelThree);
+
+  // turn on competencies ui
+  system.ui.open.forEach((element) => {
+    tweenOpacity(1, 1000, element);
+  });
+}
+
+export function hideCompetencies(system) {
+  system.showCompetencies = false;
+  let newpos = [0, 0];
+  // system.pivot = newpos;
+  tweenPosition(
+    newpos,
+    system.settings.rotationTime,
+    system.settings.container
+  );
+  tweenOpacity(0, system.settings.rotationTime, system.children.levelThree);
+
+  // turn on competencies ui
+  system.ui.open.forEach((element) => {
+    console.log(element);
+    tweenOpacity(0, 1000, element);
+  });
+
+  // turn all planets on
+  system.planets.forEach((planet) => {
+    tweenOpacity(1, 1000, planet);
+  });
+}
+
 export function dragGroup(e, group, planets) {
   // group position is determined by looking at its parent (the container too)
   const groupPos = group.position.add(group.parent.position);
@@ -134,6 +173,7 @@ export function tweenBodies(data, system, target, thenFunction = null) {
     // show current planet
   }
   if (body.planet) {
+    console.log("planet click!");
     // dim planets
     system.planets.forEach((planet) => {
       tweenOpacity(0.3, 1000, planet);
@@ -142,6 +182,9 @@ export function tweenBodies(data, system, target, thenFunction = null) {
     // show current planet
   }
 
+  if (body.moons?.length > 0) {
+    console.log("moons!");
+  }
   system.moons.forEach((moon) => {
     tweenOpacity(0.05, 1000, moon);
   });
@@ -156,19 +199,4 @@ export function tweenBodies(data, system, target, thenFunction = null) {
       tweenOpacity(1, 1000, moon);
     });
   }
-}
-
-export function levelGroup(x, y, name, parent) {
-  let levelGroup = new Group();
-  levelGroup.name = name;
-  levelGroup.pivot = [x, y];
-  levelGroup.applyMatrix = false;
-  levelGroup.dragging = false;
-  levelGroup.offset = false;
-
-  if (parent) {
-    levelGroup.parent = parent;
-  }
-
-  return levelGroup;
 }

@@ -1,10 +1,11 @@
 import { radians, degrees, clamp } from "./components/utilities.js";
 import {
   rotateGroup,
-  levelGroup,
   dragGroup,
+  hideCompetencies,
 } from "./components/paperUtilities.js";
 import { makeCircle, dashedCircle } from "./components/planets.js";
+import { Arrow, LevelGroup } from "./components/elements.js";
 import { competencies } from "./data.js";
 
 // extend paper Base class
@@ -22,6 +23,9 @@ let background;
 let levelOneRadius;
 let levelTwoRadius;
 let levelThreeRadius;
+let levelOneBodyRadius = 27;
+let levelTwoBodyRadius = 50;
+let levelThreeBodyRadius = 100;
 
 let levelOneMaxFontSize = 18;
 let levelTwoMaxFontSize = 13;
@@ -32,6 +36,7 @@ let subBodies = [];
 let bodies = [];
 let planets = [];
 let moons = [];
+let openUi = [];
 let planetCount = 0;
 let moonCount = 0;
 let rotationSpeed = 0.03;
@@ -60,9 +65,9 @@ window.onload = function () {
   // });
 
   view.onFrame = function (event) {
-    if (!levelOne.dragging) {
-      // rotateGroup(levelOne.rotation + rotationSpeed, levelOne, planets);
-    }
+    // if (!levelOne.dragging) {
+    //   // rotateGroup(levelOne.rotation + rotationSpeed, levelOne, planets);
+    // }
     // textInfo.content = `rotation: ${levelOne.rotation}`;
   };
 
@@ -83,10 +88,6 @@ window.onload = function () {
     // levelTwo.removeChildren();
     // levelOne.addChild(levelTwo);
     makeSystem();
-  };
-
-  levelOne.onMouseUp = function (e) {
-    levelOne.dragging = false;
   };
 
   function makeSystem() {
@@ -121,7 +122,21 @@ window.onload = function () {
       document.getElementById("paperCanvas").style.cursor = "default";
     };
 
-    let containerGroup = levelGroup(0, 0, "containerGroup");
+    let containerGroup = LevelGroup(0, 0, "containerGroup");
+
+    let arrowSize = (width / levelTwoBodyRadius) * 0.7;
+    let arrow = new Arrow(
+      width / 2,
+      height / 2,
+      arrowSize,
+      arrowSize,
+      containerGroup
+    );
+    arrow.onMouseUp = function (e) {
+      hideCompetencies(levelOne);
+    };
+    openUi.push(arrow);
+    arrow.opacity = 0;
 
     let dash1 = dashedCircle(
       view.bounds.center,
@@ -153,9 +168,9 @@ window.onload = function () {
       containerGroup
     );
 
-    levelOne = levelGroup(0, 0, "levelOne", containerGroup);
-    levelTwo = levelGroup(0, 0, "levelTwo", levelOne);
-    levelThree = levelGroup(0, 0, "levelThree", levelOne);
+    levelOne = LevelGroup(0, 0, "levelOne", containerGroup);
+    levelTwo = LevelGroup(0, 0, "levelTwo", levelOne);
+    levelThree = LevelGroup(0, 0, "levelThree", levelOne);
     levelThree.opacity = 0;
 
     scaleObjects = [dash1, dash2, dash3, levelOne, background];
@@ -316,5 +331,12 @@ window.onload = function () {
     levelOne.planets = planets;
     levelOne.moons = moons;
     levelOne.bodies = bodies;
+    levelOne.ui = {
+      open: openUi,
+    };
+    levelOne.settings = {
+      rotationTime: 2000,
+      container: containerGroup,
+    };
   }
 };

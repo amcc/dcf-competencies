@@ -5,8 +5,10 @@ import {
   tweenPosition,
   tweenOpacity,
   tweenBodies,
+  showCompetencies,
+  hideCompetencies,
 } from "./paperUtilities.js";
-import { grabHandle } from "./elements.js";
+import { SystemBody } from "./elements.js";
 
 let labelSpacing = 90;
 let rotationTime = 2000;
@@ -84,20 +86,14 @@ export function makeCircle(
       tweenBodies(data, system, e.target);
 
       if (
-        parent.name == "levelTwo" ||
-        parent.name == "levelThree" ||
-        title === "Being" ||
-        title === "Awareness"
+        (parent.name == "levelTwo" ||
+          parent.name == "levelThree" ||
+          title === "Being" ||
+          title === "Awareness") &&
+        !system.showCompetencies
       ) {
-        let newpos = [-view.bounds.width / 3, 0];
-        // system.pivot = newpos;
-        tweenPosition(newpos, rotationTime, containerGroup);
-        tweenOpacity(1, rotationTime, system.children.levelThree);
-      } else {
-        let newpos = [0, 0];
-        // system.pivot = newpos;
-        tweenPosition(newpos, rotationTime, containerGroup);
-        tweenOpacity(0, rotationTime, system.children.levelThree);
+        showCompetencies(system);
+        system.showCompetencies = true;
       }
       system.dragging = false;
     };
