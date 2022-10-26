@@ -1,7 +1,7 @@
 import { competencies } from "../data.js";
 
 export function showCompetencies(system) {
-  let newpos = [-view.bounds.width / 3, 0];
+  let newpos = [-view.bounds.width / 2.1, 0];
   // system.pivot = newpos;
   tweenPosition(
     newpos,
@@ -39,7 +39,6 @@ export function hideCompetencies(system) {
 
   // turn on competencies ui
   system.ui.open.forEach((element) => {
-    console.log(element);
     tweenOpacity(0, 1000, element);
   });
 
@@ -50,7 +49,7 @@ export function hideCompetencies(system) {
 
   // change state
   system.state.open = false;
-  system.state.currentBody = data;
+  // system.state.currentBody = data;
 }
 
 export function dragGroup(e, group, planets) {
@@ -88,7 +87,6 @@ export function tweenRotation(rotation, time, group, planets) {
     return;
 
   if (group.rotation < 0) Math.abs((group.rotation = 360 + group.rotation));
-  // console.log("start", group.rotation, "end", rotation);
   let tween = group.tween(
     { rotation: group.rotation },
     { rotation: rotation },
@@ -98,15 +96,6 @@ export function tweenRotation(rotation, time, group, planets) {
     planets.forEach((planet, i) => {
       if (planet.rotation < 0)
         Math.abs((planet.rotation = 360 + planet.rotation));
-
-      // if (i === 0)
-      // console.log(
-      //   "planet-start",
-      //   planet.rotation,
-      //   "planet-end",
-      //   rotation - group.rotation
-      // );
-
       let planetTween = planet.tween(
         { rotation: planet.rotation },
         { rotation: planet.rotation - (rotation - group.rotation) },
@@ -155,7 +144,6 @@ export function tweenPosition(position, time, group, thenFunction = null) {
 }
 
 export function tweenOpacity(opacity, time, group, thenFunction = null) {
-  // console.log(group);
   let tween = group.tween(
     { opacity: group.opacity },
     { opacity: opacity },
@@ -183,34 +171,80 @@ export function tweenBodies(data, system, target, thenFunction = null) {
   if (body.sun || (!body.sun && !body.planet)) {
     system.planets.forEach((planet) => {
       tweenOpacity(1, 1000, planet);
+      resetBody(planet);
     });
-    // show current planet
   }
   if (body.planet) {
-    console.log("planet click!");
     // dim planets
     system.planets.forEach((planet) => {
-      tweenOpacity(0.3, 1000, planet);
+      resetBody(planet);
     });
-    tweenOpacity(1, 1000, body.planet);
-    // show current planet
+    target.children.circleRing.opacity = 1;
+    target.active = true;
   }
 
   if (body.moons?.length > 0) {
-    console.log("moons!");
   }
   system.moons.forEach((moon) => {
-    tweenOpacity(0.05, 1000, moon);
+    tweenOpacity(0.5, 1000, moon);
+    moon.children.rectangleGroup.visible = false;
   });
 
   body.moons?.forEach((moon) => {
     tweenOpacity(1, 1000, moon);
+    moon.children.rectangleGroup.visible = true;
   });
 
   // special cases for awareness and being
   if (body.sun?.name == "Awareness" || body.sun?.name == "Being") {
     body.planets[0].moons.forEach((moon) => {
       tweenOpacity(1, 1000, moon);
+      moon.children.rectangleGroup.visible = true;
     });
   }
+
+  if (body.systemType === "moon") {
+    let planet = findParent(body, system);
+    tweenBodies(planet.data, system, planet);
+    tweenOpacity(1, 1000, body);
+    body.children.rectangleGroup.visible = true;
+  }
 }
+
+const resetSystem = (system) => {
+  // system.forEach((body) => {
+  //   resetBody(body);
+  //   body.forEach((body) => {
+  //     resetBody(body);
+  //     body.forEach((body) => {
+  //       resetBody(body);
+  //     });
+  //   });
+  // });
+};
+
+const resetBody = (body) => {
+  if (body.children.circleRing) body.children.circleRing.opacity = 0;
+  body.active = false;
+};
+
+const findParent = (body, system) => {
+  let parentBody = null;
+  system.bodies.forEach((sun) => {
+    sun.planets.forEach((planet) => {
+      planet.moons.forEach((moon) => {
+        if (moon.name == body.name) {
+          // return body;
+          if (planet.planet.name) {
+            parentBody = planet.planet;
+          } else {
+            parentBody = sun.sun;
+          }
+
+          // if (currentPlanet) return currentPlanet;
+        }
+      });
+    });
+  });
+  return parentBody;
+};

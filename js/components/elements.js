@@ -37,53 +37,6 @@ export function grabHandle(x, y) {
   return handle;
 }
 
-export function Arrow(x, y, width, height, parent) {
-  let arrowPoint = new Point(x, y);
-  let arrowWidth = width;
-  let arrowHeight = height;
-
-  let arrowGroup = new Group();
-  if (parent) arrowGroup.parent = parent;
-
-  let arrowCircle = new Path.Circle({
-    center: arrowPoint,
-    radius: arrowHeight * 2,
-    fillColor: "white",
-    parent: arrowGroup,
-  });
-
-  let arrowLine = new Path.Line({
-    from: [arrowPoint.x - width, arrowPoint.y],
-    to: [arrowPoint.x + width, arrowPoint.y],
-    strokeColor: "black",
-    strokeWidth: 3,
-    parent: arrowGroup,
-  });
-
-  let arrowSegments = new Path({
-    segments: [
-      [arrowPoint.x, arrowPoint.y - arrowHeight],
-      [arrowPoint.x + arrowWidth, arrowPoint.y],
-      [arrowPoint.x, arrowPoint.y + arrowHeight],
-    ],
-    strokeColor: "black",
-    strokeWidth: 3,
-    parent: arrowGroup,
-  });
-  if (arrowGroup.opacity > 0) {
-    arrowGroup.onMouseEnter = function (e) {
-      document.getElementById("paperCanvas").style.cursor = "pointer";
-      arrowCircle.fillColor = "grey";
-    };
-    arrowGroup.onMouseLeave = function (e) {
-      document.getElementById("paperCanvas").style.cursor = "default";
-      arrowCircle.fillColor = "white";
-    };
-  }
-
-  return arrowGroup;
-}
-
 export function SystemBody(
   title,
   x,
@@ -164,4 +117,97 @@ export function LevelGroup(x, y, name, parent) {
   }
 
   return levelGroup;
+}
+
+export function Arrow(x, y, width, height, parent) {
+  let arrowPoint = new Point(x, y);
+  let arrowWidth = width;
+  let arrowHeight = height;
+
+  let arrowGroup = new Group();
+  if (parent) arrowGroup.parent = parent;
+
+  let arrowCircle = new Path.Circle({
+    center: arrowPoint,
+    radius: arrowHeight * 2,
+    fillColor: "white",
+    parent: arrowGroup,
+  });
+
+  let arrowLine = new Path.Line({
+    from: [arrowPoint.x - width, arrowPoint.y],
+    to: [arrowPoint.x + width, arrowPoint.y],
+    strokeColor: "black",
+    strokeWidth: 3,
+    parent: arrowGroup,
+  });
+
+  let arrowSegments = new Path({
+    segments: [
+      [arrowPoint.x, arrowPoint.y - arrowHeight],
+      [arrowPoint.x + arrowWidth, arrowPoint.y],
+      [arrowPoint.x, arrowPoint.y + arrowHeight],
+    ],
+    strokeColor: "black",
+    strokeWidth: 3,
+    parent: arrowGroup,
+  });
+  if (arrowGroup.opacity > 0) {
+    arrowGroup.onMouseEnter = function (e) {
+      document.getElementById("paperCanvas").style.cursor = "pointer";
+      arrowCircle.fillColor = "grey";
+    };
+    arrowGroup.onMouseLeave = function (e) {
+      document.getElementById("paperCanvas").style.cursor = "default";
+      arrowCircle.fillColor = "white";
+    };
+  }
+
+  return arrowGroup;
+}
+
+export function CloseButton(x, y, width, height, parent) {
+  let closePoint = new Point(x, y);
+  let closeWidth = width;
+  let closeHeight = height;
+
+  let closeGroup = new Group();
+  if (parent) closeGroup.parent = parent;
+
+  let closeCircle = new Path.Circle({
+    center: closePoint,
+    radius: closeHeight * 2,
+    fillColor: "white",
+    parent: closeGroup,
+  });
+
+  let closeLine1 = new Path.Line({
+    from: [closePoint.x - width, closePoint.y - height],
+    to: [closePoint.x + width, closePoint.y + height],
+    strokeColor: "black",
+    strokeWidth: 3,
+    strokeCap: "round",
+    parent: closeGroup,
+  });
+  let closeLine2 = new Path.Line({
+    from: [closePoint.x + width, closePoint.y - height],
+    to: [closePoint.x - width, closePoint.y + height],
+    strokeColor: "black",
+    strokeWidth: 3,
+    strokeCap: "round",
+    parent: closeGroup,
+  });
+
+  if (closeGroup.opacity > 0) {
+    closeGroup.onMouseEnter = function (e) {
+      document.getElementById("paperCanvas").style.cursor = "pointer";
+      closeCircle.fillColor = "grey";
+    };
+    closeGroup.onMouseLeave = function (e) {
+      document.getElementById("paperCanvas").style.cursor = "default";
+      closeCircle.fillColor = "white";
+    };
+  }
+
+  return closeGroup;
 }

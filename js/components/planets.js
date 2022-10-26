@@ -30,14 +30,18 @@ export function makeCircle(
   rotationAngle = 0,
   data = {}
 ) {
-  let circleGroup = new Group();
+  let circleGroup = new Group({
+    name: "circleGroup",
+  });
   circleGroup.name = title;
   circleGroup.parent = parent;
   circleGroup.pivot = [x, y];
   circleGroup.applyMatrix = false;
 
   if (title) {
-    let rectangleGroup = new Group();
+    let rectangleGroup = new Group({
+      name: "rectangleGroup",
+    });
     rectangleGroup.parent = circleGroup;
 
     let rectY = y + labelSpacing;
@@ -69,6 +73,7 @@ export function makeCircle(
       parent: circleGroup,
     });
     let circleRing = new Path.Circle({
+      name: "circleRing",
       center: [x, y],
       radius: r + 4,
       strokeColor: color,
@@ -108,23 +113,22 @@ export function makeCircle(
       system.dragging = false;
     };
     circleGroup.onMouseEnter = function (e) {
-      console.log("state", system.state.open);
       if (data.moon === undefined || system.state.open === true) {
         document.getElementById("paperCanvas").style.cursor = "pointer";
 
-        circleGroup.children[2].opacity = 1;
+        circleGroup.children.circleRing.opacity = 1;
       }
     };
     circleGroup.onMouseLeave = function (e) {
       if (data.moon === undefined || system.state.open === true) {
         document.getElementById("paperCanvas").style.cursor = "default";
-        circleGroup.children[2].opacity = 0;
+        if (!circleGroup.active) circleGroup.children.circleRing.opacity = 0;
       }
     };
 
-    // rectangleGroup.onMouseEnter = function (event) {
-    //   document.getElementById("paperCanvas").style.cursor = "grab";
-    // };
+    rectangleGroup.onMouseEnter = function (event) {
+      event.preventDefault();
+    };
     // rectangleGroup.onMouseLeave = function (event) {
     //   document.getElementById("paperCanvas").style.cursor = "default";
     // };
@@ -137,6 +141,7 @@ export function makeCircle(
     };
   }
 
+  circleGroup.data = data;
   return circleGroup;
 }
 

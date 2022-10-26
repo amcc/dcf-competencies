@@ -5,7 +5,7 @@ import {
   hideCompetencies,
 } from "./components/paperUtilities.js";
 import { makeCircle, dashedCircle } from "./components/planets.js";
-import { Arrow, LevelGroup } from "./components/elements.js";
+import { CloseButton, LevelGroup } from "./components/elements.js";
 import { competencies } from "./data.js";
 import { buildMenu } from "./components/createHtml.js";
 
@@ -20,6 +20,8 @@ let levelOne;
 let levelTwo;
 let levelThree;
 let background;
+
+let everythingScale = 0.8;
 
 let levelOneRadius;
 let levelTwoRadius;
@@ -50,7 +52,6 @@ paper.install(window);
 window.onload = function () {
   //paper setup
   paper.setup("paperCanvas");
-  // console.log(paper);
   prevWidth = width = paper.view.size.width;
   prevHeight = height = paper.view.size.height;
 
@@ -95,13 +96,14 @@ window.onload = function () {
     levelTwoRadius = maxDim / 4;
     levelThreeRadius = maxDim / 2.7;
 
+    let everything = LevelGroup(0, 0, "everything");
     background = new Path.Rectangle({
       center: view.bounds.center,
       size: [width * 10, height * 10],
       fillColor: "#F5F5F5",
+      parent: everything,
     });
-
-    let containerGroup = LevelGroup(0, 0, "containerGroup");
+    let containerGroup = LevelGroup(0, 0, "containerGroup", everything);
 
     let dash1 = dashedCircle(
       view.bounds.center,
@@ -168,19 +170,19 @@ window.onload = function () {
 
     levelOne.position = view.bounds.center;
 
-    let arrowSize = (maxDim / levelTwoBodyRadius) * 0.7;
-    let arrow = new Arrow(
-      width / 2,
-      height / 2,
+    let arrowSize = clamp((maxDim / levelTwoBodyRadius) * 0.7, 10, 200);
+    let close = new CloseButton(
+      clamp(width - width / 10, width - 20, width - 40),
+      clamp(width / 10, 20, 40),
       arrowSize,
       arrowSize,
-      containerGroup
+      everything
     );
-    arrow.onMouseUp = function (e) {
+    close.onMouseUp = function (e) {
       hideCompetencies(levelOne);
     };
-    openUi.push(arrow);
-    arrow.opacity = 0;
+    openUi.push(close);
+    close.opacity = 0;
 
     // count moons
     competencies.forEach((competency, i) => {
@@ -286,6 +288,15 @@ window.onload = function () {
           const rotationAngle =
             360 - degrees(radians(360 / competencies.length) * i);
 
+          let angleMargin =
+            radians(360 / competencies.length) -
+            radians(
+              360 /
+                competencies.length /
+                competency.children.length /
+                child.children.length
+            ) *
+              k;
           let angle =
             radians(360 / competencies.length) * i +
             radians(360 / competencies.length / competency.children.length) *
@@ -297,7 +308,8 @@ window.onload = function () {
                 child.children.length
             ) *
               k -
-            radians(33);
+            radians(48) +
+            angleMargin / 8;
           let r = levelThreeRadius;
           let x = r * Math.cos(angle);
           let y = r * Math.sin(angle);
@@ -347,5 +359,7 @@ window.onload = function () {
       open: false,
       currentBody: null,
     };
+
+    // everything.scale(everythingScale);
   }
 };
