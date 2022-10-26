@@ -93,6 +93,7 @@ export function makeCircle(
     circleGroup.onMouseUp = function (e) {
       tweenRotation(rotationAngle, rotationTime, system, subBodies);
       tweenBodies(data, system, e.target);
+      system.state.currentBody = data;
 
       // if (
       //   (parent.name == "levelTwo" ||

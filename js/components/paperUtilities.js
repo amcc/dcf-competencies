@@ -48,7 +48,9 @@ export function hideCompetencies(system) {
     tweenOpacity(1, 1000, planet);
   });
 
+  // change state
   system.state.open = false;
+  system.state.currentBody = data;
 }
 
 export function dragGroup(e, group, planets) {

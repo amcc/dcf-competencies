@@ -7,11 +7,12 @@ import {
 import { makeCircle, dashedCircle } from "./components/planets.js";
 import { Arrow, LevelGroup } from "./components/elements.js";
 import { competencies } from "./data.js";
+import { buildMenu } from "./components/createHtml.js";
 
 // extend paper Base class
 // https://gist.github.com/lehni/1139726
 
-let width, height;
+let width, height, maxDim;
 let prevWidth, prevHeight;
 let dragAngle;
 let levelOneAngle;
@@ -23,9 +24,9 @@ let background;
 let levelOneRadius;
 let levelTwoRadius;
 let levelThreeRadius;
-let levelOneBodyRadius = 27;
+let levelOneBodyRadius = 16;
 let levelTwoBodyRadius = 50;
-let levelThreeBodyRadius = 100;
+let levelThreeBodyRadius = 60;
 
 let levelOneMaxFontSize = 18;
 let levelTwoMaxFontSize = 13;
@@ -53,7 +54,9 @@ window.onload = function () {
   prevWidth = width = paper.view.size.width;
   prevHeight = height = paper.view.size.height;
 
-  makeSystem();
+  setup();
+
+  buildMenu(competencies, "competency-menu");
 
   // textInfo = new PointText({
   //   position: [10, 40],
@@ -72,28 +75,25 @@ window.onload = function () {
   };
 
   view.onResize = function (event) {
+    setup();
+  };
+
+  function setup() {
     width = paper.view.size.width;
     height = paper.view.size.height;
-    // scaleObjects.forEach((object) => {
-    //   object.scale(width / prevWidth);
-    //   object.position = view.bounds.center;
-    // });
+    maxDim = Math.max(width, height);
 
     prevWidth = paper.view.size.width;
     prevHeight = paper.view.size.height;
 
     paper.project.activeLayer.removeChildren();
-
-    // levelOne.removeChildren();
-    // levelTwo.removeChildren();
-    // levelOne.addChild(levelTwo);
     makeSystem();
-  };
+  }
 
   function makeSystem() {
-    levelOneRadius = width / 7.8;
-    levelTwoRadius = width / 4;
-    levelThreeRadius = width / 2.7;
+    levelOneRadius = maxDim / 7.8;
+    levelTwoRadius = maxDim / 4;
+    levelThreeRadius = maxDim / 2.7;
 
     background = new Path.Rectangle({
       center: view.bounds.center,
@@ -168,7 +168,7 @@ window.onload = function () {
 
     levelOne.position = view.bounds.center;
 
-    let arrowSize = (width / levelTwoBodyRadius) * 0.7;
+    let arrowSize = (maxDim / levelTwoBodyRadius) * 0.7;
     let arrow = new Arrow(
       width / 2,
       height / 2,
@@ -198,11 +198,11 @@ window.onload = function () {
       let r = levelOneRadius;
       let x = r * Math.cos(angle);
       let y = r * Math.sin(angle);
-      let rectBg = new Color(1, 1, 1, 0.8);
+      let rectBg = new Color(1, 1, 1, 0);
 
       const rotationAngle = 360 - degrees(angle);
 
-      let radius = width / 27;
+      let radius = maxDim / 27;
       let labelSpacing = radius * 1.8;
 
       let sun = makeCircle(
@@ -250,7 +250,7 @@ window.onload = function () {
 
         let rectBg = new Color(1, 0, 1, 0);
 
-        let radius = width / 50;
+        let radius = maxDim / 50;
         let labelSpacing = radius * 1.8;
 
         // if (child.title) {
@@ -304,7 +304,7 @@ window.onload = function () {
 
           let rectBg = new Color(1, 0, 1, 0);
 
-          let radius = width / 100;
+          let radius = maxDim / 100;
           let labelSpacing = radius * 1.8;
 
           let moon = makeCircle(
@@ -345,6 +345,7 @@ window.onload = function () {
     };
     levelOne.state = {
       open: false,
+      currentBody: null,
     };
   }
 };
