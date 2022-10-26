@@ -36,16 +36,15 @@ main {
 }
 
 #competency-menu ul {
-  margin: 0;
+  /* margin: 0; */
   /* padding: 0; */
 }
 /* accordion */
-.collapsible {
+/* .collapsible {
   background-color: #777;
   color: white;
   cursor: pointer;
   padding: 18px;
-  /* width: 100%; */
   border: none;
   text-align: left;
   outline: none;
@@ -73,7 +72,7 @@ main {
   padding: 0 18px;
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.2s ease-out;
+  transition: max-height 0.7s ease-in-out;
   background-color: #f1f1f1;
-}
+} */
 /* end of accordion */
