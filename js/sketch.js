@@ -12,7 +12,7 @@ import { buildMenu } from "./components/createHtml.js";
 // extend paper Base class
 // https://gist.github.com/lehni/1139726
 
-let width, height, maxDim;
+let width, height, maxDim, minDim;
 let prevWidth, prevHeight;
 let dragAngle;
 let levelOneAngle;
@@ -83,6 +83,7 @@ window.onload = function () {
     width = paper.view.size.width;
     height = paper.view.size.height;
     maxDim = Math.max(width, height);
+    minDim = Math.min(width, height);
 
     prevWidth = paper.view.size.width;
     prevHeight = paper.view.size.height;
@@ -170,7 +171,7 @@ window.onload = function () {
 
     levelOne.position = view.bounds.center;
 
-    let arrowSize = clamp((maxDim / levelTwoBodyRadius) * 0.7, 10, 200);
+    let arrowSize = clamp((minDim / levelTwoBodyRadius) * 0.7, 10, 200);
     let close = new CloseButton(
       clamp(width - width / 10, width - 20, width - 40),
       clamp(width / 10, 20, 40),
