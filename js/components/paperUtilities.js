@@ -8,12 +8,17 @@ export function showCompetencies(system) {
     system.settings.rotationTime,
     system.settings.container
   );
+
+  system.children.levelThree.visible = true;
+
   tweenOpacity(1, system.settings.rotationTime, system.children.levelThree);
 
   // turn on competencies ui
   system.ui.open.forEach((element) => {
     tweenOpacity(1, 1000, element);
   });
+
+  system.state.open = true;
 }
 
 export function hideCompetencies(system) {
@@ -25,7 +30,12 @@ export function hideCompetencies(system) {
     system.settings.rotationTime,
     system.settings.container
   );
-  tweenOpacity(0, system.settings.rotationTime, system.children.levelThree);
+  tweenOpacity(
+    0,
+    system.settings.rotationTime,
+    system.children.levelThree,
+    () => (system.children.levelThree.visible = false)
+  );
 
   // turn on competencies ui
   system.ui.open.forEach((element) => {
@@ -37,6 +47,8 @@ export function hideCompetencies(system) {
   system.planets.forEach((planet) => {
     tweenOpacity(1, 1000, planet);
   });
+
+  system.state.open = false;
 }
 
 export function dragGroup(e, group, planets) {

@@ -101,42 +101,7 @@ window.onload = function () {
       fillColor: "#F5F5F5",
     });
 
-    let levelOneBackground = new Path.Rectangle({
-      center: view.bounds.center,
-      size: [width * 10, height * 10],
-      fillColor: "#F5F5F5",
-      opacity: 0,
-      parent: levelOne,
-    });
-
-    levelOneBackground.onMouseDrag = function (e) {
-      dragGroup(e, levelOne, subBodies);
-    };
-    levelOneBackground.onMouseUp = function (e) {
-      levelOne.dragging = false;
-    };
-    levelOneBackground.onMouseEnter = function (event) {
-      document.getElementById("paperCanvas").style.cursor = "grab";
-    };
-    levelOneBackground.onMouseLeave = function (event) {
-      document.getElementById("paperCanvas").style.cursor = "default";
-    };
-
     let containerGroup = LevelGroup(0, 0, "containerGroup");
-
-    let arrowSize = (width / levelTwoBodyRadius) * 0.7;
-    let arrow = new Arrow(
-      width / 2,
-      height / 2,
-      arrowSize,
-      arrowSize,
-      containerGroup
-    );
-    arrow.onMouseUp = function (e) {
-      hideCompetencies(levelOne);
-    };
-    openUi.push(arrow);
-    arrow.opacity = 0;
 
     let dash1 = dashedCircle(
       view.bounds.center,
@@ -168,14 +133,54 @@ window.onload = function () {
       containerGroup
     );
 
+    // the order below is important.
+    // first make level one - then add the background for dragging, then the rest
     levelOne = LevelGroup(0, 0, "levelOne", containerGroup);
+
+    let levelOneBackground = new Path.Rectangle({
+      center: view.bounds.center,
+      size: [width * 10, height * 10],
+      fillColor: "#F5F5F5",
+      opacity: 0,
+      parent: levelOne,
+    });
+
+    levelOneBackground.onMouseDrag = function (e) {
+      dragGroup(e, levelOne, subBodies);
+    };
+    levelOneBackground.onMouseUp = function (e) {
+      levelOne.dragging = false;
+    };
+    levelOneBackground.onMouseEnter = function (event) {
+      document.getElementById("paperCanvas").style.cursor = "grab";
+    };
+    levelOneBackground.onMouseLeave = function (event) {
+      document.getElementById("paperCanvas").style.cursor = "default";
+    };
+
     levelTwo = LevelGroup(0, 0, "levelTwo", levelOne);
     levelThree = LevelGroup(0, 0, "levelThree", levelOne);
+    levelThree.visible = false;
+
     levelThree.opacity = 0;
 
     scaleObjects = [dash1, dash2, dash3, levelOne, background];
 
     levelOne.position = view.bounds.center;
+
+    let arrowSize = (width / levelTwoBodyRadius) * 0.7;
+    let arrow = new Arrow(
+      width / 2,
+      height / 2,
+      arrowSize,
+      arrowSize,
+      containerGroup
+    );
+    arrow.onMouseUp = function (e) {
+      hideCompetencies(levelOne);
+    };
+    openUi.push(arrow);
+    arrow.opacity = 0;
 
     // count moons
     competencies.forEach((competency, i) => {
@@ -337,6 +342,9 @@ window.onload = function () {
     levelOne.settings = {
       rotationTime: 2000,
       container: containerGroup,
+    };
+    levelOne.state = {
+      open: false,
     };
   }
 };

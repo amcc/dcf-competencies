@@ -94,36 +94,39 @@ export function makeCircle(
       tweenRotation(rotationAngle, rotationTime, system, subBodies);
       tweenBodies(data, system, e.target);
 
-      if (
-        (parent.name == "levelTwo" ||
-          parent.name == "levelThree" ||
-          title === "Being" ||
-          title === "Awareness") &&
-        !system.showCompetencies
-      ) {
-        showCompetencies(system);
-        system.showCompetencies = true;
-      }
+      // if (
+      //   (parent.name == "levelTwo" ||
+      //     parent.name == "levelThree" ||
+      //     title === "Being" ||
+      //     title === "Awareness") &&
+      //   !system.showCompetencies
+      // ) {
+      showCompetencies(system);
+      system.showCompetencies = true;
+      // }
       system.dragging = false;
     };
     circleGroup.onMouseEnter = function (e) {
-      document.getElementById("paperCanvas").style.cursor = "pointer";
-      // circle.fillColor = "grey";
-      // console.log(circle);
-      circleGroup.children[2].opacity = 1;
+      console.log("state", system.state.open);
+      if (data.moon === undefined || system.state.open === true) {
+        document.getElementById("paperCanvas").style.cursor = "pointer";
+
+        circleGroup.children[2].opacity = 1;
+      }
     };
     circleGroup.onMouseLeave = function (e) {
-      document.getElementById("paperCanvas").style.cursor = "default";
-      // circle.fillColor = color;
-      circleGroup.children[2].opacity = 0;
+      if (data.moon === undefined || system.state.open === true) {
+        document.getElementById("paperCanvas").style.cursor = "default";
+        circleGroup.children[2].opacity = 0;
+      }
     };
 
-    rectangleGroup.onMouseEnter = function (event) {
-      document.getElementById("paperCanvas").style.cursor = "grab";
-    };
-    rectangleGroup.onMouseLeave = function (event) {
-      document.getElementById("paperCanvas").style.cursor = "default";
-    };
+    // rectangleGroup.onMouseEnter = function (event) {
+    //   document.getElementById("paperCanvas").style.cursor = "grab";
+    // };
+    // rectangleGroup.onMouseLeave = function (event) {
+    //   document.getElementById("paperCanvas").style.cursor = "default";
+    // };
 
     // circle.onMouseDrag = function (e) {
     //   dragGroup(e, system, subBodies);
