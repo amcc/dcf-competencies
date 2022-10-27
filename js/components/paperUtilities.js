@@ -86,10 +86,10 @@ export function tweenRotation(rotation, time, group, planets) {
   )
     return;
 
-  if (rotation > 360) rotation = rotation - 360;
+  // if (rotation > 360) rotation = rotation - 360;
   const r1 = 360 - rotation + group.rotation;
-  const r2 = rotation - group.rotation;
-  const newRotation = r1 < r2 ? r1 : r2;
+  const r2 = group.rotation - rotation;
+  // rotation = r1 < r2 ? r1 : r2;
 
   console.log("current rotation", group.rotation);
   console.log("rotate to", rotation);
