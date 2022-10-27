@@ -246,6 +246,7 @@ window.onload = function () {
           radians(24);
 
         const rotationAngle = 360 - degrees(angle);
+        console.log(child.title, rotationAngle, degrees(angle));
 
         let r = levelTwoRadius;
         let x = r * Math.cos(angle);
@@ -253,7 +254,7 @@ window.onload = function () {
 
         let rectBg = new Color(1, 0, 1, 0);
 
-        let radius = maxDim / 50;
+        let radius = maxDim / 40;
         let labelSpacing = radius * 1.8;
 
         // if (child.title) {
@@ -317,7 +318,7 @@ window.onload = function () {
 
           let rectBg = new Color(1, 0, 1, 0);
 
-          let radius = maxDim / 100;
+          let radius = maxDim / 60;
           let labelSpacing = radius * 1.8;
 
           let moon = makeCircle(

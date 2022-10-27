@@ -1,7 +1,7 @@
 import { competencies } from "../data.js";
 
 export function showCompetencies(system) {
-  let newpos = [-view.bounds.width / 2.1, 0];
+  let newpos = [-view.bounds.width / 1.8, 0];
   // system.pivot = newpos;
   tweenPosition(
     newpos,
@@ -86,7 +86,14 @@ export function tweenRotation(rotation, time, group, planets) {
   )
     return;
 
-  if (group.rotation < 0) Math.abs((group.rotation = 360 + group.rotation));
+  if (rotation > 360) rotation = rotation - 360;
+  const r1 = 360 - rotation + group.rotation;
+  const r2 = rotation - group.rotation;
+  const newRotation = r1 < r2 ? r1 : r2;
+
+  console.log("current rotation", group.rotation);
+  console.log("rotate to", rotation);
+  // if (group.rotation < 0) Math.abs((group.rotation = 360 + group.rotation));
   let tween = group.tween(
     { rotation: group.rotation },
     { rotation: rotation },
@@ -94,8 +101,8 @@ export function tweenRotation(rotation, time, group, planets) {
   );
   if (planets) {
     planets.forEach((planet, i) => {
-      if (planet.rotation < 0)
-        Math.abs((planet.rotation = 360 + planet.rotation));
+      // if (planet.rotation < 0)
+      // Math.abs((planet.rotation = 360 + planet.rotation));
       let planetTween = planet.tween(
         { rotation: planet.rotation },
         { rotation: planet.rotation - (rotation - group.rotation) },

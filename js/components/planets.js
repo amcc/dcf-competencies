@@ -113,7 +113,7 @@ export function makeCircle(
       system.dragging = false;
     };
     circleGroup.onMouseEnter = function (e) {
-      if (data.moon === undefined || system.state.open === true) {
+      if (system.state.open === true) {
         document.getElementById("paperCanvas").style.cursor = "pointer";
 
         circleGroup.children.circleRing.opacity = 1;
