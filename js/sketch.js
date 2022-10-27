@@ -246,7 +246,7 @@ window.onload = function () {
           radians(24);
 
         const rotationAngle = 360 - degrees(angle);
-        console.log(child.title, rotationAngle, degrees(angle));
+        // console.log(child.title, rotationAngle, degrees(angle));
 
         let r = levelTwoRadius;
         let x = r * Math.cos(angle);
@@ -336,7 +336,8 @@ window.onload = function () {
             levelOne,
             containerGroup,
             rotationAngle,
-            { sun: i, planet: j, moon: k }
+            { sun: i, planet: j, moon: k },
+            grandChild.url
           );
           moon.systemType = "moon";
           moons.push(moon);

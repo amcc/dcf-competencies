@@ -28,7 +28,8 @@ export function makeCircle(
   system = parent,
   containerGroup,
   rotationAngle = 0,
-  data = {}
+  data = {},
+  link = null
 ) {
   let circleGroup = new Group({
     name: "circleGroup",
@@ -126,8 +127,8 @@ export function makeCircle(
       }
     };
 
-    rectangleGroup.onMouseEnter = function (event) {
-      event.preventDefault();
+    rectangleGroup.onMouseUp = function (event) {
+      link && window.open(link, "_parent");
     };
     // rectangleGroup.onMouseLeave = function (event) {
     //   document.getElementById("paperCanvas").style.cursor = "default";
