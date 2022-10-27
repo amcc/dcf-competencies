@@ -1,7 +1,7 @@
 import { competencies } from "../data.js";
 
 export function showCompetencies(system) {
-  let newpos = [-view.bounds.width / 1.8, 0];
+  let newpos = [-view.bounds.width / 2.1, 0];
   // system.pivot = newpos;
   tweenPosition(
     newpos,
