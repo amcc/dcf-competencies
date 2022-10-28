@@ -290,6 +290,19 @@ window.onload = function () {
           const rotationAngle =
             360 - degrees(radians(360 / competencies.length) * i);
 
+          // let fudge = 0;
+          // if (competency.title === "Awareness") {
+          let margin = radians(
+            360 /
+              competencies.length /
+              competency.children.length /
+              child.children.length /
+              2
+          );
+          // } else if (competency.title === "Being") {
+          //   fudge = 0.12;
+          // }
+
           let angleMargin =
             radians(360 / competencies.length) -
             radians(
@@ -300,6 +313,7 @@ window.onload = function () {
             ) *
               k;
           let angle =
+            margin +
             radians(360 / competencies.length) * i +
             radians(360 / competencies.length / competency.children.length) *
               j +
