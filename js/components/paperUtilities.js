@@ -79,27 +79,30 @@ export function rotateGroup(rotation, group, planets) {
   }
 }
 
+function bestRotation(rotation, currRotation) {
+  const diff = rotation - currRotation;
+  if (diff > 180) {
+    return rotation - 360;
+  } else if (diff < -180) {
+    return rotation + 360;
+  } else {
+    return rotation;
+  }
+}
+
 export function tweenRotation(rotation, time, group, planets) {
+  let tweenRotation = rotation;
   if (
     (group.rotation === 0 || group.rotation === 360) &&
     (rotation === 360 || rotation === 0)
   )
     return;
 
-  console.log("current rotation", group.rotation);
-  console.log("rotate to", rotation);
-  // if (rotation > 360) rotation = rotation - 360;
-  const r1 = rotation - 360 + group.rotation;
-  const r2 = group.rotation - rotation;
-  // rotation = Math.abs(r1) < Math.abs(r2) ? r1 : r2;
-  // rotation = -72;
+  tweenRotation = bestRotation(rotation, group.rotation);
 
-  // console.log("then... current rotation", group.rotation);
-  // console.log("then... rotate to", rotation);
-  // if (group.rotation < 0) Math.abs((group.rotation = 360 + group.rotation));
   let tween = group.tween(
     { rotation: group.rotation },
-    { rotation: rotation },
+    { rotation: tweenRotation },
     { duration: time, easing: "easeInOutQuad" }
   );
   if (planets) {
@@ -108,7 +111,7 @@ export function tweenRotation(rotation, time, group, planets) {
       // Math.abs((planet.rotation = 360 + planet.rotation));
       let planetTween = planet.tween(
         { rotation: planet.rotation },
-        { rotation: planet.rotation - (rotation - group.rotation) },
+        { rotation: planet.rotation - (tweenRotation - group.rotation) },
         { duration: time, easing: "easeInOutQuad" }
       );
     });
