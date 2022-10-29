@@ -6,6 +6,15 @@ function displayToggle() {
   const textMenu = document.getElementById("competencies-menu");
 
   // If the checkbox is checked, display the output text
+  //   if (checkBox.checked == true) {
+  //     diagram.style.display = "block";
+  //     textMenu.style.display = "none";
+  //   } else {
+  //     diagram.style.display = "none";
+  //     textMenu.style.display = "block";
+  //   }
+
+  // If the checkbox is checked, display the output text
   if (checkBox.checked == true) {
     diagram.classList.remove("visually-hidden");
     textMenu.classList.add("visually-hidden");
