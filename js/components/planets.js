@@ -88,6 +88,7 @@ export function makeCircle(
       parent: rectangleGroup,
       content: title,
       fontSize: fontSize,
+      fontWeight: 500,
       fontFamily: "Poppins",
       justification: align,
       fillColor: "black",

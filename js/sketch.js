@@ -31,8 +31,8 @@ let levelTwoBodyRadius = 50;
 let levelThreeBodyRadius = 60;
 
 let levelOneMaxFontSize = 18;
-let levelTwoMaxFontSize = 13;
-let levelOneMinFontSize = 12;
+let levelTwoMaxFontSize = 15;
+let levelOneMinFontSize = 15;
 let levelTwoMinFontSize = 20;
 
 let subBodies = [];
@@ -57,7 +57,7 @@ window.onload = function () {
 
   setup();
 
-  buildMenu(competencies, "competency-menu");
+  buildMenu(competencies, "competencies-menu");
 
   // textInfo = new PointText({
   //   position: [10, 40],
@@ -206,7 +206,7 @@ window.onload = function () {
       const rotationAngle = 360 - degrees(angle);
 
       let radius = maxDim / 27;
-      let labelSpacing = radius * 1.8;
+      let labelSpacing = radius * 1.4;
 
       let sun = makeCircle(
         competency.title,
@@ -255,7 +255,7 @@ window.onload = function () {
         let rectBg = new Color(1, 0, 1, 0);
 
         let radius = maxDim / 40;
-        let labelSpacing = radius * 1.8;
+        let labelSpacing = radius * 1.4;
 
         // if (child.title) {
         let planet = makeCircle(
@@ -333,7 +333,7 @@ window.onload = function () {
           let rectBg = new Color(1, 0, 1, 0);
 
           let radius = maxDim / 60;
-          let labelSpacing = radius * 1.8;
+          let labelSpacing = radius * 1.4;
 
           let moon = makeCircle(
             grandChild.title,

@@ -7,8 +7,11 @@ export const buildMenu = (competencies, id) => {
   competencies.forEach((competency, i) => {
     //   competency.title,
     const li = createElement("li");
+    li.classList.add("sun");
     const details = createElement("details");
+    details.setAttribute("open", "");
     const summary = createElement("summary", competency.title);
+    summary.classList.add("sun");
     const color = competency.color;
     summary.style.setProperty("--tree-color", color);
     li.appendChild(details);
@@ -17,14 +20,17 @@ export const buildMenu = (competencies, id) => {
 
     if (competency.children?.length > 0) {
       const secondLevel = createElement("ul");
-      secondLevel.classList.add("content");
+
       //   secondLevel.classList.add("collapsible");
       details.appendChild(secondLevel);
 
       competency.children.forEach((child, j) => {
         if (child.title) {
+          secondLevel.classList.add("level-two");
           const li = createElement("li");
           const details = createElement("details");
+
+          details.setAttribute("open", "");
           const summary = createElement("summary", child.title);
           summary.style.setProperty("--tree-color", color);
           details.appendChild(summary);
@@ -34,7 +40,8 @@ export const buildMenu = (competencies, id) => {
 
           if (child.children?.length > 0) {
             const thirdLevel = createElement("ul");
-            thirdLevel.classList.add("content");
+            thirdLevel.classList.add("level-three");
+            // thirdLevel.classList.add("content");
             details.appendChild(thirdLevel);
 
             child.children.forEach((grandChild, k) => {
@@ -44,6 +51,7 @@ export const buildMenu = (competencies, id) => {
             });
           }
         } else {
+          secondLevel.classList.add("level-three");
           child.children.forEach((grandChild, k) => {
             const li = createElement("li", grandChild.title);
             li.style.setProperty("--tree-color", color);

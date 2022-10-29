@@ -1,0 +1,1258 @@
+/* Home page */
+#competency-explorer {
+  width: 100%;
+  height: 90vh;
+  margin: 20px 0 !important;
+  border: none;
+  max-width: 100%;
+  padding: 10px;
+  overflow: hidden;
+}
+
+/* Body */
+
+body .is-layout-flex {
+  display: inherit;
+}
+
+.home.page.hide-homepage-title .site-main > article > .entry-content {
+  margin-bottom: 0;
+}
+
+.entry-header {
+  display: none;
+}
+
+#main {
+  padding-bottom: 0;
+}
+
+.entry-content {
+  margin-bottom: 0 !important;
+  margin-top: 0 !important;
+}
+
+::selection {
+  /* Change highlight background color to black */
+  background: #282938;
+  /* Change highlight text color to red */
+  color: #fcd980;
+}
+
+/* Navigation */
+
+.current-menu-item a {
+  color: #2405f2 !important;
+}
+
+.ContributeNavBtn {
+  border-radius: 40px;
+  padding-top: 16px !important;
+  padding-bottom: 16px !important;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+  font-weight: 400;
+  background-color: #fcd980;
+}
+
+.site-logo {
+  width: 250px;
+  height: 22px;
+  margin-bottom: 0;
+}
+
+.site-logo img {
+  max-width: 85%;
+}
+
+#masthead {
+  padding-top: 0px;
+  padding-bottom: 20px;
+  padding-left: 140px;
+  padding-right: 140px;
+  background-color: #f4f6fc;
+}
+
+.main-navigation > div > ul {
+  align-items: center;
+  gap: 30px;
+}
+
+.main-menu-container {
+  background-color: #f4f6fc !important;
+}
+
+.main-menu-container a {
+  font-weight: 400;
+  font-size: 16px !important;
+}
+
+.main-menu-container a:focus {
+  color: #474bc2 !important;
+}
+
+/* Breadcrumb Navigation */
+
+.breadcrumbs a {
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.breadcrumbs .post {
+  font-size: 16px;
+}
+
+/* Hero */
+
+.heroHeader {
+  margin-left: 0 !important;
+  font-weight: 500;
+}
+
+.heroTxt {
+  margin-left: 0 !important;
+  font-size: 16px !important;
+}
+
+.heroBtnContainer {
+  margin-left: 0 !important;
+}
+
+/* Hero button container */
+
+.heroBtn a {
+  border-radius: 40px;
+  font-size: 16px;
+  padding-top: 16px !important;
+  padding-bottom: 16px !important;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+  font-weight: 400;
+  background-color: #fcd980 !important;
+}
+
+/* Comp Section */
+
+.wp-container-3 {
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+}
+
+.HTwo {
+  color: #282938 !important;
+  margin-left: 0 !important;
+}
+
+.CompPara {
+  color: #282938 !important;
+  margin-left: 0 !important;
+  padding-bottom: 80px;
+}
+
+.compDummyImg {
+  padding-bottom: 32px !important;
+}
+
+/* Lastest Contributions */
+
+.lastestContHeading {
+  color: #282938 !important;
+  margin-left: 0 !important;
+}
+
+.homePosts p {
+  color: #282938 !important;
+  font-size: 16px;
+}
+
+.homePosts h2 {
+  color: #282938 !important;
+  font-size: 24px !important;
+  font-weight: 600 !important;
+}
+
+.homePosts a {
+  color: #282938 !important;
+  text-decoration: none;
+}
+
+.homePosts a:hover {
+  color: #474bc2 !important;
+}
+
+.entry-title a:hover {
+  text-decoration: none !important;
+}
+
+.more-link {
+  font-size: 16px;
+}
+
+/* Design Teachers */
+
+.wp-block-lazyblock-no-slug {
+  background-color: #f4f6fc;
+}
+
+.carousel {
+  padding-top: 64% !important;
+}
+
+#carouselDiv {
+  padding-top: 10%;
+}
+
+.imgAndCaption {
+  padding-top: 48px;
+}
+
+/* Footer */
+
+.entry-footer {
+  display: none !important;
+}
+
+#colophon {
+  display: none;
+}
+
+/* Footer - social links */
+
+.socialLinks {
+  margin-bottom: 0px;
+}
+
+.wp-social-link.wp-social-link-twitter.twitter.twitter.wp-block-social-link {
+  color: #1c1e53;
+}
+
+.wp-social-link.wp-social-link-instagram.insta.insta.wp-block-social-link {
+  color: #1c1e53;
+}
+
+/* Hide the group block after the page template | 4870249-zen rg */
+.page-template-blank .wp-site-blocks > .wp-block-group:last-of-type {
+  display: none;
+}
+
+/* Hide the group block after the post template | 34821785-hc CH */
+.post-template-blank .wp-site-blocks > .wp-block-group:last-of-type {
+  display: none;
+}
+
+/* no block after footer | 34821785-hc/zen (LL) */
+footer + .wp-block-group {
+  display: none;
+}
+
+/* ABOUT */
+
+#post-3884 {
+  padding-top: 2rem;
+}
+
+.whoWeArePara {
+  display: contents;
+}
+
+.aboutTeachers {
+  padding-bottom: 4rem;
+  padding-top: 4rem;
+}
+
+.wp-container-1 {
+  margin-top: 0px !important;
+  margin-bottom: 0 !important;
+  padding-top: 0px;
+}
+
+.whoWeAreTitle {
+  margin: auto !important;
+  padding-bottom: 2rem;
+}
+
+/* Contact form */
+
+#wpcf7-f4444-p3884-o1 {
+  max-width: 1000px;
+  background: #f4f6fc;
+  border-radius: 12px;
+  padding: 70px;
+  margin-bottom: 124px;
+}
+
+.cf7sg-container.cf7sg-not-grid {
+  max-width: 100% !important;
+}
+
+#submitBtn {
+  color: #1b1c2a !important;
+  font-size: 16px;
+  font-weight: 400;
+  border-radius: 40px;
+  padding-top: 16px !important;
+  padding-bottom: 16px !important;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+  background-color: #fcd980;
+  border-style: none;
+}
+
+.nameAndEmail {
+  display: inline-block;
+  padding-bottom: 24px;
+  font-size: 16px;
+}
+
+#subjectLabel {
+  width: 100% !important;
+}
+
+#nameLabel {
+  width: 427px;
+}
+
+#emailLabel {
+  width: 427px;
+}
+
+.subejectDiv {
+  padding-bottom: 24px;
+  font-size: 16px;
+}
+
+.messageDiv {
+  padding-bottom: 24px;
+  font-size: 16px;
+}
+
+/* PAST EVENTS */
+
+/* fix query loop image alignment / zen-4897901 (DW) */
+
+.pastEventsH2 {
+  margin-top: 4rem !important;
+  margin-bottom: 0px !important;
+}
+
+.wp-container-19 {
+  background-color: white;
+  margin-top: 0;
+}
+
+.pastEventsContainer {
+  padding-bottom: 106px;
+}
+
+.wp-block-post-featured-image {
+  margin-top: 18px;
+}
+
+.pastEventMainPostTitle {
+  margin-top: 0 !important;
+}
+
+.pastEventMainPostTitle a {
+  text-decoration: none;
+}
+
+.pastEventsTopEx .wp-block-post-excerpt__excerpt {
+  padding-top: 48px;
+  padding-bottom: 16px;
+}
+
+.pastEventsTopEx .wp-block-post-excerpt__more-text {
+  text-align: center;
+}
+
+.pastEventsTopEx .wp-block-post-excerpt__more-text a {
+  color: #2405f2;
+}
+
+.pastEventsTopEx .more-link {
+  display: none;
+}
+
+.pastEventsPostTitle a {
+  color: #282938;
+  text-decoration: none;
+  padding-top: 32px;
+  padding-bottom: 10px;
+}
+
+.pastEventsEx p {
+  padding-bottom: 16px;
+}
+
+.pastEventsEx .more-link {
+  display: none;
+}
+
+.wp-block-post-excerpt__more-link {
+  text-decoration: none;
+  color: #282938;
+}
+
+/* COMP PAGES */
+
+.column1-desktop-grid__span-8 {
+  max-width: 1000px !important;
+}
+
+.backCompBtn a {
+  text-align: left;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+}
+
+.compBtn {
+  display: flex;
+}
+
+.compArrow {
+  font-size: 50px !important;
+  margin: 0 !important;
+  margin-top: -5% !important;
+}
+
+.wp-container-21 {
+  margin: 0;
+}
+
+.wp-container-18 {
+  margin: 0;
+}
+
+.wp-container-20 {
+  margin: 0;
+}
+
+.wp-container-23 {
+  margin-top: 0px !important;
+}
+
+.wp-container-13 {
+  max-width: 1000px !important;
+}
+
+.wp-container-17 {
+  max-width: 1000px !important;
+  padding: 0 !important;
+}
+
+.wp-container-16 {
+  max-width: 1000px !important;
+  padding: 0 !important;
+}
+
+.processTitle {
+  margin-top: 4rem !important;
+}
+
+.processDummyImg img {
+  width: 85% !important;
+}
+
+.compCaseStudiesHeader {
+  max-width: 1000px !important;
+  margin: 0 !important;
+}
+
+.compCaseStudiesSubtitle {
+  max-width: 1000px !important;
+  margin: 0 !important;
+}
+
+.compCaseStudies {
+  background-color: #eef4fa !important;
+}
+
+.compCaseStudiesH2 a {
+  color: #282938;
+  text-decoration: none;
+}
+
+.compCaseStudiesPosts .more-link {
+  display: none;
+}
+
+.compCaseStudiesH2 a:hover {
+  color: #474bc2;
+}
+
+.compCaseStudies a {
+  padding-top: 20px;
+}
+
+.contributeBtnComp a {
+  font-weight: 400;
+}
+
+/* PROCESS PAGES */
+
+.wp-container-11.entry-content.wp-block-post-content {
+  margin: 0;
+}
+
+.processHeader {
+  margin-top: 0px !important;
+}
+
+.ProcessLocationTitle {
+  margin-bottom: 0px !important;
+}
+
+.compNavHeading {
+  max-width: 1000px !important;
+}
+
+.compNavMenus {
+  max-width: 1000px !important;
+}
+
+.compNavMenus a {
+  border: 2px solid #2405f2;
+  color: #2405f2 !important;
+  box-sizing: border-box;
+  border-radius: 10px;
+  padding: 10px 15px !important;
+}
+
+.compNavMenus a:hover {
+  border: 2px solid #2405f2;
+  color: white !important;
+  background-color: #2405f2;
+  transition: 0.3s;
+}
+
+.ProcessActLeft .wp-block-media-text__content {
+  padding-left: 0px !important;
+}
+
+.ProcessActRight .wp-block-media-text__content {
+  padding-right: 0px !important;
+}
+
+/* Blog posts */
+
+.post .entry-header {
+  display: block !important;
+}
+
+.post .entry-header h1 {
+  font-weight: 600;
+  font-size: 32px;
+  text-align: center;
+}
+
+.entry-meta {
+  display: none;
+}
+
+.post h2 {
+  font-size: 24px !important;
+}
+
+.post-thumbnail img {
+  width: 70%;
+}
+
+.entry-content p {
+  font-size: 16px;
+}
+
+.author-bio {
+  display: none;
+}
+
+#comments {
+  display: none;
+}
+
+.nav-links a {
+  color: #282938;
+}
+
+.nav-links a:hover {
+  color: #474bc2;
+}
+
+/* CONTRIBUTE FORM */
+
+.cf7sg-container .cf7-smart-grid.has-grid .columns .container.glider-slide {
+  padding: 0px !important;
+}
+
+.cf7sg-container .cf7-smart-grid.has-grid .container {
+  padding-left: 0px !important;
+  padding-right: 3% !important;
+}
+
+.c2p-top-level.cf72post-category {
+  height: 72rem;
+}
+
+input.cf72post-category.cf72post-child-term {
+  margin-right: 10px;
+}
+
+.cf7-smart-grid.has-grid .ui-button {
+  border-radius: 40px !important;
+  border: 0px !important;
+  padding-top: 16px !important;
+  padding-bottom: 16px !important;
+  padding-left: 48px !important;
+  padding-right: 48px !important;
+  font-weight: 400;
+  background-color: #fcd980;
+}
+
+.slider-control.slider-prev.ui-button {
+  border: 3px solid #1c1e53 !important;
+  background-color: #eef4fa !important;
+}
+
+.slider-control.wpcf7-form-control.wpcf7-submit {
+  border-radius: 40px !important;
+  border: 0px !important;
+  padding-top: 20px !important;
+  padding-bottom: 20px !important;
+  padding-left: 40px !important;
+  padding-right: 40px !important;
+  font-weight: 400;
+  background-color: #fcd980;
+  color: #1b1c2a;
+}
+
+.slider-control.wpcf7-form-control.wpcf7-submit:hover {
+  background-color: #f5e4b8 !important;
+}
+
+#nameAndEmail {
+  padding-bottom: 2rem;
+}
+
+fieldset {
+  border: none;
+}
+
+.post-category #uncategorized {
+  display: none;
+}
+
+.post-category #past-events {
+  display: none;
+}
+
+.radio-term {
+  padding-bottom: 15px;
+}
+
+/* Being category */
+
+.post-category #being {
+  font-size: 24px;
+  padding-bottom: 10px;
+}
+
+#being .cf72post-category {
+  display: none;
+}
+
+.cf72post-child-terms.parent-term-35918 {
+  padding-bottom: 2rem;
+}
+
+/* Creating category */
+
+.post-category #creating {
+  font-size: 24px;
+  padding-bottom: 10px;
+}
+
+#creating .cf72post-category {
+  display: none;
+}
+
+[id="2d"] .cf72post-category {
+  display: none;
+}
+
+[id="3d"] .cf72post-category {
+  display: none;
+}
+
+[id="4d"] .cf72post-category {
+  display: none;
+}
+
+#computational .cf72post-category {
+  display: none;
+}
+
+.cf72post-child-terms.parent-term-35925 {
+  padding-bottom: 24px;
+}
+
+.cf72post-child-terms.parent-term-35929 {
+  padding-bottom: 24px;
+}
+
+.cf72post-child-terms.parent-term-35934 {
+  padding-bottom: 24px;
+}
+
+/* Engaging category */
+
+.post-category #engaging {
+  position: absolute;
+  right: 9rem;
+  font-size: 24px;
+  top: 0px;
+}
+
+#engaging .cf72post-category {
+  display: none;
+}
+
+.post-category .cf72post-child-terms.parent-term-35944 {
+  position: absolute;
+  right: 0rem;
+  top: 2rem;
+}
+
+/* Sensing category */
+
+.post-category #sensing {
+  position: absolute;
+  font-size: 24px;
+  right: 9.8rem;
+  top: 19.5rem;
+}
+
+#sensing .cf72post-category {
+  display: none;
+}
+
+.post-category .cf72post-child-terms.parent-term-35953 {
+  position: absolute;
+  right: 1.6rem;
+  top: 21.5rem;
+}
+
+/* Thinking category */
+
+.post-category #thinking {
+  position: absolute;
+  font-size: 24px;
+  right: 9.6rem;
+  top: 37.2rem;
+}
+
+#thinking .cf72post-category {
+  display: none;
+}
+
+.post-category .cf72post-child-terms.parent-term-35904 {
+  position: absolute;
+  right: 2rem;
+  top: 39.3rem;
+}
+
+#kinesthetic .cf72post-category {
+  display: none;
+}
+
+.cf72post-child-terms.parent-term-35906 {
+  padding-bottom: 24px;
+}
+
+#micro-meso-macro .cf72post-category {
+  display: none;
+}
+
+.cf72post-child-terms.parent-term-35961 {
+  padding-bottom: 24px;
+}
+
+#strategies .cf72post-category {
+  display: none;
+}
+
+/*-=-=-=-=-=-=- TABLET -=-=-=-=-=-=-*/
+
+@media only screen and (max-width: 1000px) {
+  /*  home page competencies */
+  #competency-explorer {
+    padding: 0.6rem;
+  }
+
+  /* Navigation */
+  #masthead {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  #site-navigation a {
+    font-size: 12px;
+  }
+
+  .site-logo {
+    width: 200px;
+  }
+
+  .ContributeNavBtn {
+    border-radius: 40px;
+    padding-top: 16px !important;
+    padding-bottom: 16px !important;
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+    font-weight: 400;
+    background-color: #fcd980;
+  }
+
+  .main-navigation > div > ul {
+    align-items: center;
+    gap: 20px;
+  }
+
+  /* Hero */
+
+  .wp-block-cover {
+    padding-left: 30px !important;
+  }
+
+  /* Comp Map */
+
+  .compSection {
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+  }
+
+  /* Latest Contributions */
+
+  .latestCont {
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+  }
+
+  /* Design Teachers */
+
+  .parent {
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+  }
+
+  #carouselTitle {
+    font-size: 40px !important;
+    padding-top: 50px;
+  }
+
+  #carouselDiv {
+    margin-left: 0px !important;
+    width: 100% !important;
+  }
+
+  /* Arrows */
+  .carousel::before {
+    display: none;
+  }
+
+  .carousel::after {
+    display: none;
+  }
+
+  /* Carousel content */
+
+  .carousel {
+    padding-top: 35% !important;
+  }
+
+  .carousel_content {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+
+  .carousel .carousel_content .quoteText {
+    font-size: 22px;
+  }
+
+  .homeTeachers {
+    margin-top: 20px;
+  }
+
+  .courseName {
+    margin: 0 !important;
+  }
+
+  /* Footer */
+
+  #contributeFooterCol {
+    transform: translate(0, 15%) !important;
+    padding-left: 40px;
+  }
+
+  #contributeFooterCol p {
+    font-size: 12px;
+  }
+
+  #contributeFooterTxt {
+    padding-bottom: 15px !important;
+  }
+
+  #contributeFooterH2 {
+    font-size: 25px !important;
+  }
+
+  #contributeFooterBtn {
+    font-size: 12px !important;
+    padding-top: 13px !important;
+    padding-bottom: 13px !important;
+    padding-left: 25px !important;
+    padding-right: 25px !important;
+  }
+
+  .socialMedia p {
+    font-size: 16px;
+  }
+
+  .socialLink {
+    width: 20px !important;
+  }
+
+  #divNav p {
+    font-size: 12px;
+  }
+
+  #divNavRight a {
+    font-size: 12px;
+  }
+
+  /*-=-=-=-=-=-=- PAST EVENTS -=-=-=-=-*/
+  .pastEventsPostTitle {
+    font-size: 20px;
+  }
+
+  .pastEventsEx {
+    font-size: 12px !important;
+  }
+
+  .pastEventsReadMore {
+    font-size: 12px !important;
+  }
+
+  /*-=-=-=-=-=-=- ABOUT -=-=-=-=-=-=-=-*/
+
+  .aboutPara {
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+  }
+
+  .aboutTeachers {
+    padding-left: 40px !important;
+  }
+
+  /*-=-=-=--=-=- PROCESS -=-=-=-=-*/
+
+  .processHeader {
+    margin-top: 0px !important;
+  }
+
+  .processTopContainer {
+    padding-top: 80px !important;
+  }
+}
+
+/*-=-=-=-=-=- PHONE -=-=-=-=-=-=-=-*/
+
+@media only screen and (max-width: 600px) {
+  /*-=-=-=-=-=-=- HOME -=-=-=-=-=-=-*/
+
+  /*  home page competencies */
+  #competency-explorer {
+    padding: 0.3rem;
+  }
+
+  /* Navigation */
+
+  .mobile-nav-side .has-menu .site-logo {
+    justify-self: left !important;
+    margin: 0px !important;
+  }
+
+  .site-logo img {
+    max-width: 100%;
+  }
+
+  #masthead {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .ContributeNavBtn {
+    padding: 0px !important;
+    width: 0px !important;
+  }
+
+  /* Home Hero */
+
+  .wp-block-cover .wp-block-cover__inner-container,
+  .wp-block-cover-image .wp-block-cover__inner-container {
+    width: 100%;
+  }
+
+  .wp-block-cover.is-style-default {
+    padding: 20px !important;
+  }
+
+  .heroHeader {
+    font-size: 37px !important;
+  }
+
+  .heroTxt {
+    font-size: 15px !important;
+  }
+
+  .heroBtn {
+    border-radius: 40px;
+    font-size: 13px !important;
+  }
+
+  /* Comp Section */
+
+  .compSection {
+    padding-right: 0px !important;
+    padding-left: 20px !important;
+  }
+
+  .wp-container-8.wp-block-group {
+    margin-top: 20px !important;
+    padding-right: 0px !important;
+  }
+
+  .CompPara {
+    font-size: 15px !important;
+    width: 642px;
+    padding-bottom: 80px;
+    max-width: 100%;
+    padding-right: 20px;
+  }
+
+  /* Latest Contributions */
+
+  .latestCont {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  /* Design Teachers */
+
+  .parent {
+    padding-left: 20px !important;
+  }
+
+  #carouselTitle {
+    font-size: 32px !important;
+  }
+
+  #carouselDiv {
+    margin-left: 0px !important;
+    width: 100% !important;
+  }
+
+  /* Arrows */
+  .carousel::before {
+    display: none;
+  }
+
+  .carousel::after {
+    display: none;
+  }
+
+  /* Carousel content */
+
+  .carousel {
+    padding-top: 70% !important;
+  }
+
+  .carousel_content {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+
+  .quoteText {
+    font-size: 16px !important;
+  }
+
+  .homeTeachers {
+    margin-top: 0px;
+  }
+
+  .imgAndCaption {
+    padding-top: 30px;
+  }
+
+  .teacherName {
+    font-size: 12px !important;
+  }
+
+  .courseName {
+    font-size: 12px !important;
+    margin: 0 !important;
+  }
+
+  /* Footer */
+
+  #DCFLogoFooter {
+    margin-left: 0% !important;
+  }
+
+  .socialMedia {
+    margin-left: 0px !important;
+  }
+
+  #contributeFooterCol {
+    display: contents;
+    padding-left: 20px !important;
+    padding-bottom: 55px !important;
+  }
+
+  #contributeFooterH2 {
+    padding-left: 20px;
+    padding-top: 20px;
+  }
+
+  #contributeFooterTxt {
+    padding-right: 20px !important;
+    padding-left: 20px !important;
+  }
+
+  #contributeFooterBtn {
+    margin-bottom: 20px;
+    margin-left: 20px;
+  }
+
+  #divNav {
+    padding-left: 20px !important;
+  }
+
+  #divNavRight {
+    display: none;
+  }
+
+  /*-=-=-=--=-=- ABOUT -=-=-=-=-=-*/
+
+  #wpcf7-f4444-p3884-o1 {
+    padding: 20px !important;
+  }
+
+  #nameLabel {
+    width: 100%;
+  }
+
+  #emailLabel {
+    width: 100%;
+  }
+
+  .aboutTeachers {
+    padding-left: 0px !important;
+  }
+
+  .aboutPara {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    font-size: 15px;
+  }
+
+  /*-=-=-=--=-=- PAST EVENTS -=-=-=-=-*/
+  .pastEventMainPostTitle {
+    margin-right: 0px !important;
+    margin-bottom: 0px !important;
+    margin-left: 0px !important;
+    font-size: 30px !important;
+  }
+
+  .pastEventsTopEx {
+    padding: 0 !important;
+  }
+
+  /*-=-=-=--=-=- PROCESS -=-=-=-=-*/
+
+  .compBtn {
+    padding-left: 0px !important;
+  }
+
+  .processHeader {
+    margin-top: 40px !important;
+  }
+
+  .ProcessActRight .wp-block-media-text__content {
+    padding-left: 0px !important;
+  }
+
+  /*-=-=-=--=-=- COMPs -=-=-=-=-*/
+
+  .compCaseStudies {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+
+  .compCaseStudiesHeader {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  .compCaseStudiesSubtitle {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  .compContContainer {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  /*-=-=-=--=-=- CONTRIBUTE -=-=-=-=-*/
+
+  .cf7-smart-grid.has-grid .ui-button {
+    width: 142.86px;
+    height: 58.33px;
+    text-align: center;
+  }
+
+  .c2p-top-level.cf72post-category {
+    height: 144rem;
+  }
+  /*Engage*/
+  #engaging {
+    right: auto !important;
+    top: 63rem !important;
+  }
+
+  .cf72post-child-terms.parent-term-35944 {
+    right: auto !important;
+    top: 65.5rem !important;
+  }
+
+  /*Sensing*/
+  #sensing {
+    right: auto !important;
+    top: 84rem !important;
+  }
+
+  .cf72post-child-terms.parent-term-35953 {
+    right: auto !important;
+    top: 86.5rem !important;
+  }
+
+  /*Thinkng*/
+  #thinking {
+    right: auto !important;
+    top: 103rem !important;
+  }
+
+  .cf72post-child-terms.parent-term-35904 {
+    right: auto !important;
+    top: 105.5rem !important;
+  }
+}

@@ -9,9 +9,10 @@
     />
 
     <link rel="stylesheet" type="text/css" href="css/styles.css" />
-    <link rel="stylesheet" type="text/css" href="css/list.css" />
+    <link rel="stylesheet" type="text/css" href="css/list-flex.css" />
     <!-- Load the Paper.js library -->
     <script type="text/javascript" src="js/paper.js"></script>
+    <script type="text/javascript" src="js/html-functions.js"></script>
     <!-- Load external PaperScript and associate it with myCanvas -->
     <script
       type="module"
@@ -22,20 +23,36 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap"
       rel="stylesheet"
     />
     <base target="_parent" />
   </head>
   <body>
-    <!-- <main> -->
-    <!-- <section id="competency-area"> -->
-    <div class="canvas-container">
-      <canvas id="paperCanvas" resize="true" data-paper-resize="true"></canvas>
-    </div>
-    <!-- </section> -->
+    <main>
+      <label class="switch">
+        <input
+          type="checkbox"
+          id="display-competencies"
+          onClick="displayToggle()"
+          checked
+        />
+        <span class="slider round"></span>
+        <span class="visually-hidden">display competency diagram</span>
+      </label>
+      Display competency diagram
 
-    <nav id="competency-menu" class="visually-hidden"></nav>
-    <!-- </main> -->
+      <div id="competencies-diagram">
+        <div class="canvas-container">
+          <canvas
+            id="paperCanvas"
+            resize="true"
+            data-paper-resize="true"
+          ></canvas>
+        </div>
+      </div>
+
+      <nav id="competencies-menu" class="visually-hidden"></nav>
+    </main>
   </body>
 </html>
