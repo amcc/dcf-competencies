@@ -30,17 +30,19 @@
   </head>
   <body>
     <main>
-      <label class="switch">
-        <input
-          type="checkbox"
-          id="display-competencies"
-          onClick="displayToggle()"
-          checked
-        />
-        <span class="slider round"></span>
-        <span class="visually-hidden">display competency diagram</span>
-      </label>
-      Display competency diagram
+      <div id="competencies-switch" class="visually-hidden">
+        <label class="switch">
+          <input
+            type="checkbox"
+            id="display-competencies"
+            onClick="displayToggle()"
+            checked
+          />
+          <span class="slider round"></span>
+          <span class="visually-hidden">display competency diagram</span>
+        </label>
+        Display competency diagram
+      </div>
 
       <div id="competencies-diagram">
         <div class="canvas-container">
