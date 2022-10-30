@@ -9,7 +9,7 @@
   flex-wrap: wrap;
   max-height: 100vh; */
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(19vw, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(17vw, 1fr));
   gap: 10px;
 }
 @media (max-width: 800px) {

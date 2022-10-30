@@ -45,7 +45,9 @@ export const buildMenu = (competencies, id) => {
             details.appendChild(thirdLevel);
 
             child.children.forEach((grandChild, k) => {
-              const li = createElement("li", grandChild.title);
+              let link = `<a href="${grandChild.url}">${grandChild.title}</a>`;
+              const li = createElement("li");
+              li.innerHTML = link;
               li.style.setProperty("--tree-color", color);
               thirdLevel.appendChild(li);
             });
@@ -53,7 +55,9 @@ export const buildMenu = (competencies, id) => {
         } else {
           secondLevel.classList.add("level-three");
           child.children.forEach((grandChild, k) => {
-            const li = createElement("li", grandChild.title);
+            let link = `<a href="${grandChild.url}">${grandChild.title}</a>`;
+            const li = createElement("li");
+            li.innerHTML = link;
             li.style.setProperty("--tree-color", color);
             secondLevel.appendChild(li);
           });
