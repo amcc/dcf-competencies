@@ -84,6 +84,7 @@ export function makeCircle(
       parent: circleGroup,
     });
     var text = new PointText({
+      name: "text",
       position: [rectX, rectY + 6],
       parent: rectangleGroup,
       content: title,
@@ -93,6 +94,17 @@ export function makeCircle(
       justification: align,
       fillColor: "black",
     });
+    if (data.moon !== undefined) {
+      let line = new Path.Line({
+        name: "line",
+        from: [rectX, rectY + 8],
+        to: [rectX + text.bounds.width, rectY + 8],
+        strokeColor: "black",
+        strokeWidth: 1,
+        parent: rectangleGroup,
+        opacity: 0,
+      });
+    }
 
     rect.bounds.width = text.bounds.width + 20;
     rect.position = text.position;
@@ -119,6 +131,8 @@ export function makeCircle(
         document.getElementById("paperCanvas").style.cursor = "pointer";
 
         circleGroup.children.circleRing.opacity = 1;
+        if (circleGroup.children.rectangleGroup.children.line)
+          circleGroup.children.rectangleGroup.children.line.opacity = 1;
       }
     };
     circleGroup.onMouseLeave = function (e) {
@@ -126,6 +140,9 @@ export function makeCircle(
         document.getElementById("paperCanvas").style.cursor = "default";
         if (!circleGroup.active) circleGroup.children.circleRing.opacity = 0;
       }
+
+      if (circleGroup.children.rectangleGroup.children.line)
+        circleGroup.children.rectangleGroup.children.line.opacity = 0;
     };
 
     rectangleGroup.onMouseUp = function (event) {
