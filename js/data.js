@@ -37,6 +37,43 @@ export const competencies = [
     ],
   },
   {
+    title: "Awareness",
+    color: "#FE196B",
+    children: [
+      {
+        title: null,
+        // color: "#A0EC32",
+        children: [
+          {
+            title: "Situational awareness",
+            color: "#FE196B",
+            url: "https://dcf-lab.com/situational-awareness/",
+          },
+          {
+            title: "Embodied awareness",
+            color: "#FE196B",
+            url: "https://dcf-lab.com/embodied-awareness/",
+          },
+          {
+            title: "Emotional awareness",
+            color: "#FE196B",
+            url: "https://dcf-lab.com/emotional-awareness-2/",
+          },
+          {
+            title: "Tangible awareness",
+            color: "#FE196B",
+            url: "https://dcf-lab.com/tactile-perception/",
+          },
+          {
+            title: "Process awareness",
+            color: "#FE196B",
+            url: "https://dcf-lab.com/process-awareness/",
+          },
+        ],
+      },
+    ],
+  },
+  {
     title: "Thinking",
     color: "#009AFE",
     children: [
@@ -120,45 +157,6 @@ export const competencies = [
       },
     ],
   },
-
-  {
-    title: "Awareness",
-    color: "#FE196B",
-    children: [
-      {
-        title: null,
-        // color: "#A0EC32",
-        children: [
-          {
-            title: "Situational awareness",
-            color: "#FE196B",
-            url: "https://dcf-lab.com/situational-awareness/",
-          },
-          {
-            title: "Embodied awareness",
-            color: "#FE196B",
-            url: "https://dcf-lab.com/embodied-awareness/",
-          },
-          {
-            title: "Emotional awareness",
-            color: "#FE196B",
-            url: "https://dcf-lab.com/emotional-awareness-2/",
-          },
-          {
-            title: "Tangible awareness",
-            color: "#FE196B",
-            url: "https://dcf-lab.com/tactile-perception/",
-          },
-          {
-            title: "Process awareness",
-            color: "#FE196B",
-            url: "https://dcf-lab.com/process-awareness/",
-          },
-        ],
-      },
-    ],
-  },
-
   {
     title: "Creating",
     color: "#FCA500",
