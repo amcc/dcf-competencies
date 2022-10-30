@@ -146,7 +146,7 @@ export function makeCircle(
     };
 
     rectangleGroup.onMouseUp = function (event) {
-      link && window.open(link, "_parent");
+      link && !system.dragging && window.open(link, "_parent");
     };
     // rectangleGroup.onMouseLeave = function (event) {
     //   document.getElementById("paperCanvas").style.cursor = "default";
