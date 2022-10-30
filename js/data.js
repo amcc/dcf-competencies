@@ -1,42 +1,5 @@
 export const competencies = [
   {
-    title: "Being",
-    color: "#A0EC32",
-    children: [
-      {
-        title: null,
-        // color: "#A0EC32",
-        children: [
-          {
-            title: "Flexible",
-            color: "#A0EC32",
-            url: "https://dcf-lab.com/flexibility/",
-          },
-          {
-            title: "Creative Confident",
-            color: "#A0EC32",
-            url: "https://dcf-lab.com/creative-confidence/",
-          },
-          {
-            title: "Self-learner",
-            color: "#A0EC32",
-            url: "https://dcf-lab.com/being-a-self-learner/",
-          },
-          {
-            title: "Original",
-            color: "#A0EC32",
-            url: "https://dcf-lab.com/being-original/",
-          },
-          {
-            title: "Intrinsic motivation",
-            color: "#A0EC32",
-            url: "https://dcf-lab.com/intrinsic-motivation/",
-          },
-        ],
-      },
-    ],
-  },
-  {
     title: "Awareness",
     color: "#FE196B",
     children: [
@@ -68,90 +31,6 @@ export const competencies = [
             title: "Process awareness",
             color: "#FE196B",
             url: "https://dcf-lab.com/process-awareness/",
-          },
-        ],
-      },
-    ],
-  },
-  {
-    title: "Thinking",
-    color: "#009AFE",
-    children: [
-      {
-        title: "Strategies",
-        color: "#009AFE",
-        children: [
-          {
-            title: "Synthesis",
-            color: "#009AFE",
-            url: "https://dcf-lab.com/design-synthesis/",
-          },
-          {
-            title: "Pragmatic Thinking",
-            color: "#009AFE",
-            url: "https://dcf-lab.com/pragmatic-thinking/",
-          },
-          {
-            title: "Critical Thinking",
-            color: "#009AFE",
-            url: "https://dcf-lab.com/critical-thinking/",
-          },
-          {
-            title: "Conceptual Thinking",
-            color: "#009AFE",
-            url: "https://dcf-lab.com/conceptual-thinking/",
-          },
-        ],
-      },
-      {
-        title: "Micro/Meso/Macro",
-        color: "#009AFE",
-        children: [
-          {
-            title: "Sustainable Thinking",
-            color: "#009AFE",
-            url: "https://dcf-lab.com/sustainable-thinking/",
-          },
-          {
-            title: "Future Thinking",
-            color: "#009AFE",
-            url: "https://dcf-lab.com/future-thinking/",
-          },
-          {
-            title: "Systems Thinking",
-            color: "#009AFE",
-            url: "https://dcf-lab.com/systems-thinking/",
-          },
-          {
-            title: "Scalar Thinking",
-            color: "#009AFE",
-            url: "https://dcf-lab.com/scalar-thinking-2/",
-          },
-        ],
-      },
-      {
-        title: "Kineasthetic",
-        color: "#009AFE",
-        children: [
-          // {
-          //   title: "Temporal Thinking",
-          //   color: "#009AFE",
-          //   url: "https://dcf-lab.com/about/",
-          // },
-          {
-            title: "Spacial Thinking",
-            color: "#009AFE",
-            url: "https://dcf-lab.com/spatial-thinking/",
-          },
-          // {
-          //   title: "3D Thinking (object)",
-          //   color: "#009AFE",
-          //   url: "https://dcf-lab.com/about/",
-          // },
-          {
-            title: "Visual Thinking",
-            color: "#009AFE",
-            url: "https://dcf-lab.com/visual-thinking/",
           },
         ],
       },
@@ -364,6 +243,128 @@ export const competencies = [
             title: "Context of global diversity",
             color: "#6622CC",
             url: "https://dcf-lab.com/understand-context-of-global-diversity/",
+          },
+        ],
+      },
+    ],
+  },
+
+  {
+    title: "Being",
+    color: "#A0EC32",
+    children: [
+      {
+        title: null,
+        // color: "#A0EC32",
+        children: [
+          {
+            title: "Flexible",
+            color: "#A0EC32",
+            url: "https://dcf-lab.com/flexibility/",
+          },
+          {
+            title: "Creative Confident",
+            color: "#A0EC32",
+            url: "https://dcf-lab.com/creative-confidence/",
+          },
+          {
+            title: "Self-learner",
+            color: "#A0EC32",
+            url: "https://dcf-lab.com/being-a-self-learner/",
+          },
+          {
+            title: "Original",
+            color: "#A0EC32",
+            url: "https://dcf-lab.com/being-original/",
+          },
+          {
+            title: "Intrinsic motivation",
+            color: "#A0EC32",
+            url: "https://dcf-lab.com/intrinsic-motivation/",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    title: "Thinking",
+    color: "#009AFE",
+    children: [
+      {
+        title: "Strategies",
+        color: "#009AFE",
+        children: [
+          {
+            title: "Synthesis",
+            color: "#009AFE",
+            url: "https://dcf-lab.com/design-synthesis/",
+          },
+          {
+            title: "Pragmatic Thinking",
+            color: "#009AFE",
+            url: "https://dcf-lab.com/pragmatic-thinking/",
+          },
+          {
+            title: "Critical Thinking",
+            color: "#009AFE",
+            url: "https://dcf-lab.com/critical-thinking/",
+          },
+          {
+            title: "Conceptual Thinking",
+            color: "#009AFE",
+            url: "https://dcf-lab.com/conceptual-thinking/",
+          },
+        ],
+      },
+      {
+        title: "Micro/Meso/Macro",
+        color: "#009AFE",
+        children: [
+          {
+            title: "Sustainable Thinking",
+            color: "#009AFE",
+            url: "https://dcf-lab.com/sustainable-thinking/",
+          },
+          {
+            title: "Future Thinking",
+            color: "#009AFE",
+            url: "https://dcf-lab.com/future-thinking/",
+          },
+          {
+            title: "Systems Thinking",
+            color: "#009AFE",
+            url: "https://dcf-lab.com/systems-thinking/",
+          },
+          {
+            title: "Scalar Thinking",
+            color: "#009AFE",
+            url: "https://dcf-lab.com/scalar-thinking-2/",
+          },
+        ],
+      },
+      {
+        title: "Kineasthetic",
+        color: "#009AFE",
+        children: [
+          // {
+          //   title: "Temporal Thinking",
+          //   color: "#009AFE",
+          //   url: "https://dcf-lab.com/about/",
+          // },
+          {
+            title: "Spacial Thinking",
+            color: "#009AFE",
+            url: "https://dcf-lab.com/spatial-thinking/",
+          },
+          // {
+          //   title: "3D Thinking (object)",
+          //   color: "#009AFE",
+          //   url: "https://dcf-lab.com/about/",
+          // },
+          {
+            title: "Visual Thinking",
+            color: "#009AFE",
+            url: "https://dcf-lab.com/visual-thinking/",
           },
         ],
       },
