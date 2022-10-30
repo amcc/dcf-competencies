@@ -1,5 +1,42 @@
 export const competencies = [
   {
+    title: "Being",
+    color: "#A0EC32",
+    children: [
+      {
+        title: null,
+        // color: "#A0EC32",
+        children: [
+          {
+            title: "Flexible",
+            color: "#A0EC32",
+            url: "https://dcf-lab.com/flexibility/",
+          },
+          {
+            title: "Creative Confident",
+            color: "#A0EC32",
+            url: "https://dcf-lab.com/creative-confidence/",
+          },
+          {
+            title: "Self-learner",
+            color: "#A0EC32",
+            url: "https://dcf-lab.com/being-a-self-learner/",
+          },
+          {
+            title: "Original",
+            color: "#A0EC32",
+            url: "https://dcf-lab.com/being-original/",
+          },
+          {
+            title: "Intrinsic motivation",
+            color: "#A0EC32",
+            url: "https://dcf-lab.com/intrinsic-motivation/",
+          },
+        ],
+      },
+    ],
+  },
+  {
     title: "Thinking",
     color: "#009AFE",
     children: [
@@ -10,22 +47,22 @@ export const competencies = [
           {
             title: "Synthesis",
             color: "#009AFE",
-            url: "https://dcf-lab.com/about/",
+            url: "https://dcf-lab.com/design-synthesis/",
           },
           {
             title: "Pragmatic Thinking",
             color: "#009AFE",
-            url: "https://dcf-lab.com/about/",
+            url: "https://dcf-lab.com/pragmatic-thinking/",
           },
           {
             title: "Critical Thinking",
             color: "#009AFE",
-            url: "https://dcf-lab.com/about/",
+            url: "https://dcf-lab.com/critical-thinking/",
           },
           {
             title: "Conceptual Thinking",
             color: "#009AFE",
-            url: "https://dcf-lab.com/about/",
+            url: "https://dcf-lab.com/conceptual-thinking/",
           },
         ],
       },
@@ -34,24 +71,24 @@ export const competencies = [
         color: "#009AFE",
         children: [
           {
-            title: "Sustainable Thiking",
+            title: "Sustainable Thinking",
             color: "#009AFE",
-            url: "https://dcf-lab.com/about/",
+            url: "https://dcf-lab.com/sustainable-thinking/",
           },
           {
-            title: "Futures Thinking",
+            title: "Future Thinking",
             color: "#009AFE",
-            url: "https://dcf-lab.com/about/",
+            url: "https://dcf-lab.com/future-thinking/",
           },
           {
             title: "Systems Thinking",
             color: "#009AFE",
-            url: "https://dcf-lab.com/about/",
+            url: "https://dcf-lab.com/systems-thinking/",
           },
           {
             title: "Scalar Thinking",
             color: "#009AFE",
-            url: "https://dcf-lab.com/about/",
+            url: "https://dcf-lab.com/scalar-thinking-2/",
           },
         ],
       },
@@ -59,25 +96,25 @@ export const competencies = [
         title: "Kineasthetic",
         color: "#009AFE",
         children: [
-          {
-            title: "Temporal Thinking",
-            color: "#009AFE",
-            url: "https://dcf-lab.com/about/",
-          },
+          // {
+          //   title: "Temporal Thinking",
+          //   color: "#009AFE",
+          //   url: "https://dcf-lab.com/about/",
+          // },
           {
             title: "Spacial Thinking",
             color: "#009AFE",
-            url: "https://dcf-lab.com/about/",
+            url: "https://dcf-lab.com/spatial-thinking/",
           },
-          {
-            title: "3D Thinking (object)",
-            color: "#009AFE",
-            url: "https://dcf-lab.com/about/",
-          },
+          // {
+          //   title: "3D Thinking (object)",
+          //   color: "#009AFE",
+          //   url: "https://dcf-lab.com/about/",
+          // },
           {
             title: "Visual Thinking",
             color: "#009AFE",
-            url: "https://dcf-lab.com/about/",
+            url: "https://dcf-lab.com/visual-thinking/",
           },
         ],
       },
@@ -93,24 +130,29 @@ export const competencies = [
         // color: "#A0EC32",
         children: [
           {
-            title: "Situated awareness",
+            title: "Situational awareness",
             color: "#FE196B",
-            url: "https://dcf-lab.com/about/",
+            url: "https://dcf-lab.com/situational-awareness/",
           },
           {
             title: "Embodied awareness",
             color: "#FE196B",
-            url: "https://dcf-lab.com/about/",
+            url: "https://dcf-lab.com/embodied-awareness/",
+          },
+          {
+            title: "Emotional awareness",
+            color: "#FE196B",
+            url: "https://dcf-lab.com/emotional-awareness-2/",
           },
           {
             title: "Tangible awareness",
             color: "#FE196B",
-            url: "https://dcf-lab.com/about/",
+            url: "https://dcf-lab.com/tactile-perception/",
           },
           {
             title: "Process awareness",
             color: "#FE196B",
-            url: "https://dcf-lab.com/about/",
+            url: "https://dcf-lab.com/process-awareness/",
           },
         ],
       },
@@ -128,17 +170,17 @@ export const competencies = [
           {
             title: "Visual design development",
             color: "#FCA500",
-            url: "https://dcf-lab.com/about/",
+            url: "https://dcf-lab.com/visual-design-development/",
           },
           {
             title: "Visualization techniques",
             color: "#FCA500",
-            url: "https://dcf-lab.com/about/",
+            url: "https://dcf-lab.com/visualization-techniques/",
           },
           {
             title: "Digital visualization techniques",
             color: "#FCA500",
-            url: "https://dcf-lab.com/about/",
+            url: "https://dcf-lab.com/digital-visualization-techniques-2/",
           },
         ],
       },
@@ -149,17 +191,22 @@ export const competencies = [
           {
             title: "Form development",
             color: "#FCA500",
-            url: "https://dcf-lab.com/about/",
+            url: "https://dcf-lab.com/form-development/",
+          },
+          {
+            title: "Spatial Design Development",
+            color: "#FCA500",
+            url: "https://dcf-lab.com/spatial-design-development/",
           },
           {
             title: "Fabrication techniques",
             color: "#FCA500",
-            url: "https://dcf-lab.com/about/",
+            url: "https://dcf-lab.com/fabrication-techniques/",
           },
           {
             title: "Digital fabrication techniques",
             color: "#FCA500",
-            url: "https://dcf-lab.com/about/",
+            url: "https://dcf-lab.com/digital-fabrication-techniques/",
           },
         ],
       },
@@ -170,50 +217,50 @@ export const competencies = [
           {
             title: "Interaction design",
             color: "#FCA500",
-            url: "https://dcf-lab.com/about/",
+            url: "https://dcf-lab.com/interaction-design/",
           },
           {
             title: "User experience design",
             color: "#FCA500",
-            url: "https://dcf-lab.com/about/",
+            url: "https://dcf-lab.com/user-experience-design/",
           },
           {
             title: "Service design",
             color: "#FCA500",
-            url: "https://dcf-lab.com/about/",
+            url: "https://dcf-lab.com/service-design/",
           },
 
           {
             title: "Systems design",
             color: "#FCA500",
-            url: "https://dcf-lab.com/about/",
+            url: "https://dcf-lab.com/systems-design/",
           },
         ],
       },
       {
-        title: "Computational Design",
+        title: "5D Design",
         color: "#FCA500",
         children: [
           {
             title: "Creative coding",
             color: "#FCA500",
-            url: "https://dcf-lab.com/about/",
+            url: "https://dcf-lab.com/creative-coding/",
           },
           {
             title: "Data analysis",
             color: "#FCA500",
-            url: "https://dcf-lab.com/about/",
+            url: "https://dcf-lab.com/data-analysis/",
           },
           {
             title: "Systems integration",
             color: "#FCA500",
-            url: "https://dcf-lab.com/about/",
+            url: "https://dcf-lab.com/systems-integration/",
           },
 
           {
             title: "Physical computing",
             color: "#FCA500",
-            url: "https://dcf-lab.com/about/",
+            url: "https://dcf-lab.com/physical-computing/",
           },
         ],
       },
@@ -230,17 +277,17 @@ export const competencies = [
           {
             title: "Communication using language & metaphor",
             color: "#6622CC",
-            url: "https://dcf-lab.com/about/",
+            url: "https://dcf-lab.com/communication-using-language-metaphor-2/",
           },
           {
             title: "Communicate using story telling",
             color: "#6622CC",
-            url: "https://dcf-lab.com/about/",
+            url: "https://dcf-lab.com/communicate-using-story-telling/",
           },
           {
-            title: "Communication & presentation",
+            title: "Communication and presentation",
             color: "#6622CC",
-            url: "https://dcf-lab.com/about/",
+            url: "https://dcf-lab.com/communication-and-presentation/",
           },
         ],
       },
@@ -251,22 +298,22 @@ export const competencies = [
           {
             title: "Interdiciplinary collaboration",
             color: "#6622CC",
-            url: "https://dcf-lab.com/about/",
+            url: "https://dcf-lab.com/interdisciplinary-collaboration/",
           },
           {
-            title: "Co design collaboration process",
+            title: "Co-design collaboration process",
             color: "#6622CC",
-            url: "https://dcf-lab.com/about/",
+            url: "https://dcf-lab.com/co-design-collaboration-process/",
           },
           {
             title: "Collaborate through facilitation",
             color: "#6622CC",
-            url: "https://dcf-lab.com/about/",
+            url: "https://dcf-lab.com/collaborate-through-facilitation/",
           },
           {
             title: "Collaborate across platforms",
             color: "#6622CC",
-            url: "https://dcf-lab.com/about/",
+            url: "https://dcf-lab.com/collaborate-across-platforms/",
           },
         ],
       },
@@ -277,85 +324,48 @@ export const competencies = [
           {
             title: "Managing design process",
             color: "#6622CC",
-            url: "https://dcf-lab.com/about/",
+            url: "https://dcf-lab.com/managing-design-process/",
           },
           {
             title: "Desiging design process",
             color: "#6622CC",
-            url: "https://dcf-lab.com/about/",
+            url: "https://dcf-lab.com/designing-design-process/",
           },
-          {
-            title: "Managing projects",
-            color: "#6622CC",
-            url: "https://dcf-lab.com/about/",
-          },
+          // {
+          //   title: "Managing projects",
+          //   color: "#6622CC",
+          //   url: "https://dcf-lab.com/about/",
+          // },
           {
             title: "Managing complexity",
             color: "#6622CC",
-            url: "https://dcf-lab.com/about/",
+            url: "https://dcf-lab.com/managing-complexity/",
           },
         ],
       },
       {
-        title: "Context",
+        title: "Managing Context",
         color: "#6622CC",
         children: [
           {
-            title: "Understand business context",
+            title: "Business context",
             color: "#6622CC",
-            url: "https://dcf-lab.com/about/",
+            url: "https://dcf-lab.com/understanding-business-context/",
           },
           {
-            title: "Understand context of different stakeholders",
+            title: "Context of Business Stakeholders",
             color: "#6622CC",
-            url: "https://dcf-lab.com/about/",
+            url: "https://dcf-lab.com/understand-context-of-business-stakeholders/",
           },
           {
-            title: "Understand scope & context of design discourse",
+            title: "Business processes",
             color: "#6622CC",
-            url: "https://dcf-lab.com/about/",
+            url: "https://dcf-lab.com/understanding-business-processes/",
           },
           {
-            title: "Understand context of global diversity",
+            title: "Context of global diversity",
             color: "#6622CC",
-            url: "https://dcf-lab.com/about/",
-          },
-        ],
-      },
-    ],
-  },
-  {
-    title: "Being",
-    color: "#A0EC32",
-    children: [
-      {
-        title: null,
-        // color: "#A0EC32",
-        children: [
-          {
-            title: "Flexible",
-            color: "#A0EC32",
-            url: "https://dcf-lab.com/about/",
-          },
-          {
-            title: "Creative Confident",
-            color: "#A0EC32",
-            url: "https://dcf-lab.com/about/",
-          },
-          {
-            title: "Self Learner",
-            color: "#A0EC32",
-            url: "https://dcf-lab.com/about/",
-          },
-          {
-            title: "Original",
-            color: "#A0EC32",
-            url: "https://dcf-lab.com/about/",
-          },
-          {
-            title: "Intrinsic motivation",
-            color: "#A0EC32",
-            url: "https://dcf-lab.com/about/",
+            url: "https://dcf-lab.com/understand-context-of-global-diversity/",
           },
         ],
       },
