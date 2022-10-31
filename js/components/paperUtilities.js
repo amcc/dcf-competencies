@@ -180,6 +180,9 @@ export function tweenBodies(data, system, target, thenFunction = null) {
   if (planet !== undefined) body = bodies[sun].planets[planet];
   if (moon !== undefined) body = bodies[sun].planets[planet].moons[moon];
 
+  console.log("reset");
+  unselectBodies(system);
+
   // turn on planets
   if (body.sun || (!body.sun && !body.planet)) {
     system.planets.forEach((planet) => {
@@ -212,6 +215,7 @@ export function tweenBodies(data, system, target, thenFunction = null) {
 
   // special cases for awareness and being
   if (body.sun?.name == "Awareness" || body.sun?.name == "Being") {
+    // target.active = true;
     body.planets[0].moons.forEach((moon) => {
       tweenOpacity(1, 1000, moon);
       moon.children.rectangleGroup.visible = true;
@@ -225,6 +229,17 @@ export function tweenBodies(data, system, target, thenFunction = null) {
     tweenOpacity(1, 1000, body);
     body.children.rectangleGroup.visible = true;
   }
+}
+
+export function unselectBodies(system) {
+  system.planets.forEach((planet) => {
+    resetBody(planet);
+    planet.active = false;
+  });
+  system.moons.forEach((moon) => {
+    resetBody(moon);
+    moon.active = false;
+  });
 }
 
 const resetSystem = (system) => {

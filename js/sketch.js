@@ -5,6 +5,7 @@ import {
   hideCompetencies,
   tweenOpacity,
   visibleFalse,
+  unselectBodies,
 } from "./components/paperUtilities.js";
 import { makeCircle, dashedCircle } from "./components/planets.js";
 import { TextElement, CloseButton, LevelGroup } from "./components/elements.js";
@@ -71,9 +72,11 @@ window.onload = function () {
   // });
 
   view.onFrame = function (event) {
-    // if (!levelOne.dragging) {
-    //   // rotateGroup(levelOne.rotation + rotationSpeed, levelOne, planets);
-    // }
+    if (!levelOne.dragging && !levelOne.state.clicked) {
+      rotateGroup(levelOne.rotation + rotationSpeed, levelOne, subBodies);
+      // rotateGroup(rotation, group, planets);
+      // tweenRotation(rotationAngle, rotationTime, system, subBodies);
+    }
     // textInfo.content = `rotation: ${levelOne.rotation}`;
   };
 
@@ -184,20 +187,22 @@ window.onload = function () {
     );
     close.onMouseUp = function (e) {
       hideCompetencies(levelOne);
+      unselectBodies(levelOne);
     };
     openUi.push(close);
     close.opacity = 0;
 
     let activateText = new TextElement(
-      width / 2,
+      clamp(width / 10, 20, 40),
       clamp(width / 10, 20, 40),
       "Click and drag to explore",
       levelOneMinFontSize,
-      "center",
+      "left",
       everything
     );
 
     levelOneBackground.onMouseDown = function (e) {
+      levelOne.state.clicked = true;
       tweenOpacity(0, 500, activateText, () => {
         visibleFalse(activateText);
       });
@@ -387,11 +392,13 @@ window.onload = function () {
     levelOne.ui = {
       open: openUi,
     };
+    levelOne.startMessage = activateText; // for hiding later
     levelOne.settings = {
-      rotationTime: 2000,
+      rotationTime: 1000,
       container: containerGroup,
     };
     levelOne.state = {
+      clicked: false,
       open: false,
       currentBody: null,
     };

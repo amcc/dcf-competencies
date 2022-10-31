@@ -7,6 +7,7 @@ import {
   tweenBodies,
   showCompetencies,
   hideCompetencies,
+  visibleFalse,
 } from "./paperUtilities.js";
 import { SystemBody } from "./elements.js";
 
@@ -129,21 +130,28 @@ export function makeCircle(
         // }
       }
 
+      // remove startmessage if it exists
+      if (system.startMessage.visible) {
+        tweenOpacity(0, 500, system.startMessage, () => {
+          visibleFalse(system.startMessage);
+        });
+        system.state.clicked = true;
+      }
       system.dragging = false;
     };
     circleGroup.onMouseEnter = function (e) {
-      if (system.state.open === true) {
-        document.getElementById("paperCanvas").style.cursor = "pointer";
+      document.getElementById("paperCanvas").style.cursor = "pointer";
+      circleGroup.children.circleRing.opacity = 1;
+      if (circleGroup.children.rectangleGroup.children.line)
+        circleGroup.children.rectangleGroup.children.line.opacity = 1;
 
-        circleGroup.children.circleRing.opacity = 1;
-        if (circleGroup.children.rectangleGroup.children.line)
-          circleGroup.children.rectangleGroup.children.line.opacity = 1;
+      if (system.state.open === true) {
       }
     };
     circleGroup.onMouseLeave = function (e) {
+      document.getElementById("paperCanvas").style.cursor = "default";
+      if (!circleGroup.active) circleGroup.children.circleRing.opacity = 0;
       if (data.moon === undefined || system.state.open === true) {
-        document.getElementById("paperCanvas").style.cursor = "default";
-        if (!circleGroup.active) circleGroup.children.circleRing.opacity = 0;
       }
 
       if (circleGroup.children.rectangleGroup.children.line)
