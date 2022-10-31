@@ -110,20 +110,25 @@ export function makeCircle(
     rect.position = text.position;
 
     circleGroup.onMouseUp = function (e) {
-      tweenRotation(rotationAngle, rotationTime, system, subBodies);
-      tweenBodies(data, system, e.target);
-      system.state.currentBody = data;
+      if (circleGroup.currentSelection) {
+        link && !system.dragging && window.open(link, "_parent");
+      } else {
+        tweenRotation(rotationAngle, rotationTime, system, subBodies);
+        tweenBodies(data, system, e.target);
+        system.state.currentBody = data;
 
-      // if (
-      //   (parent.name == "levelTwo" ||
-      //     parent.name == "levelThree" ||
-      //     title === "Being" ||
-      //     title === "Awareness") &&
-      //   !system.showCompetencies
-      // ) {
-      showCompetencies(system);
-      system.showCompetencies = true;
-      // }
+        // if (
+        //   (parent.name == "levelTwo" ||
+        //     parent.name == "levelThree" ||
+        //     title === "Being" ||
+        //     title === "Awareness") &&
+        //   !system.showCompetencies
+        // ) {
+        showCompetencies(system);
+        system.showCompetencies = true;
+        // }
+      }
+
       system.dragging = false;
     };
     circleGroup.onMouseEnter = function (e) {

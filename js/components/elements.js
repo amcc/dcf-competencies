@@ -211,3 +211,31 @@ export function CloseButton(x, y, width, height, parent) {
 
   return closeGroup;
 }
+
+export function TextElement(x, y, text, fontSize, align, parent) {
+  let textPoint = new Point(x, y);
+
+  let textGroup = new Group();
+  if (parent) textGroup.parent = parent;
+
+  var text = new PointText({
+    position: textPoint,
+    parent: textGroup,
+    content: text,
+    fontSize: fontSize,
+    fontFamily: "Poppins",
+    justification: align,
+    fillColor: "black",
+  });
+
+  if (textGroup.opacity > 0) {
+    textGroup.onMouseEnter = function (e) {
+      document.getElementById("paperCanvas").style.cursor = "pointer";
+    };
+    textGroup.onMouseLeave = function (e) {
+      document.getElementById("paperCanvas").style.cursor = "default";
+    };
+  }
+
+  return textGroup;
+}

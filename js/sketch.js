@@ -3,9 +3,11 @@ import {
   rotateGroup,
   dragGroup,
   hideCompetencies,
+  tweenOpacity,
+  visibleFalse,
 } from "./components/paperUtilities.js";
 import { makeCircle, dashedCircle } from "./components/planets.js";
-import { CloseButton, LevelGroup } from "./components/elements.js";
+import { TextElement, CloseButton, LevelGroup } from "./components/elements.js";
 import { competencies } from "./data.js";
 import { buildMenu } from "./components/createHtml.js";
 
@@ -154,6 +156,7 @@ window.onload = function () {
     levelOneBackground.onMouseUp = function (e) {
       levelOne.dragging = false;
     };
+
     levelOneBackground.onMouseEnter = function (event) {
       document.getElementById("paperCanvas").style.cursor = "grab";
     };
@@ -184,6 +187,22 @@ window.onload = function () {
     };
     openUi.push(close);
     close.opacity = 0;
+
+    let activateText = new TextElement(
+      width / 2,
+      clamp(width / 10, 20, 40),
+      "Click and drag to explore",
+      levelOneMinFontSize,
+      "center",
+      everything
+    );
+
+    levelOneBackground.onMouseDown = function (e) {
+      tweenOpacity(0, 500, activateText, () => {
+        visibleFalse(activateText);
+      });
+      // console.log("oi");
+    };
 
     // count moons
     competencies.forEach((competency, i) => {

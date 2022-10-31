@@ -201,11 +201,13 @@ export function tweenBodies(data, system, target, thenFunction = null) {
   system.moons.forEach((moon) => {
     tweenOpacity(0.5, 1000, moon);
     moon.children.rectangleGroup.visible = false;
+    moon.currentSelection = null;
   });
 
   body.moons?.forEach((moon) => {
     tweenOpacity(1, 1000, moon);
     moon.children.rectangleGroup.visible = true;
+    moon.currentSelection = true;
   });
 
   // special cases for awareness and being
@@ -213,6 +215,7 @@ export function tweenBodies(data, system, target, thenFunction = null) {
     body.planets[0].moons.forEach((moon) => {
       tweenOpacity(1, 1000, moon);
       moon.children.rectangleGroup.visible = true;
+      moon.currentSelection = true;
     });
   }
 
@@ -261,3 +264,7 @@ const findParent = (body, system) => {
   });
   return parentBody;
 };
+
+export function visibleFalse(item) {
+  item.visible = false;
+}
