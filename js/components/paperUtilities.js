@@ -20,6 +20,11 @@ export function showCompetencies(system) {
 
   system.state.open = true;
 }
+export function hideCompetenciesText(system) {
+  system.moons.forEach((moon) => {
+    moon.children.rectangleGroup.visible = false;
+  });
+}
 
 export function hideCompetencies(system) {
   system.showCompetencies = false;
@@ -45,6 +50,7 @@ export function hideCompetencies(system) {
   // turn all planets on
   system.moons.forEach((moon) => {
     console.log(competencies[moon.data.sun].title);
+    moon.children.rectangleGroup.visible = false;
 
     if (
       competencies[moon.data.sun].title != "Awareness" &&

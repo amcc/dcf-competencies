@@ -3,6 +3,7 @@ import {
   rotateGroup,
   dragGroup,
   hideCompetencies,
+  hideCompetenciesText,
   tweenOpacity,
   visibleFalse,
   unselectBodies,
@@ -404,6 +405,8 @@ window.onload = function () {
     };
 
     hideCompetencies(levelOne);
+    hideCompetenciesText(levelOne);
+
     // everything.scale(everythingScale);
   }
 };
