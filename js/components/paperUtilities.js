@@ -49,7 +49,6 @@ export function hideCompetencies(system) {
 
   // turn all planets on
   system.moons.forEach((moon) => {
-    console.log(competencies[moon.data.sun].title);
     moon.children.rectangleGroup.visible = false;
 
     if (
@@ -57,7 +56,6 @@ export function hideCompetencies(system) {
       competencies[moon.data.sun].title != "Being"
     ) {
       tweenOpacity(0, 1000, moon);
-      console.log(competencies[moon.data.sun].title);
     }
   });
 
@@ -194,7 +192,6 @@ export function tweenBodies(data, system, target, thenFunction = null) {
   if (planet !== undefined) body = bodies[sun].planets[planet];
   if (moon !== undefined) body = bodies[sun].planets[planet].moons[moon];
 
-  console.log("reset");
   unselectBodies(system);
 
   // turn on planets
@@ -229,7 +226,7 @@ export function tweenBodies(data, system, target, thenFunction = null) {
 
   // special cases for awareness and being
   if (body.sun?.name == "Awareness" || body.sun?.name == "Being") {
-    target.active = true;
+    // target.active = true;
     body.planets[0].moons.forEach((moon) => {
       tweenOpacity(1, 1000, moon);
       moon.children.rectangleGroup.visible = true;

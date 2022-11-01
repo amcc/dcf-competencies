@@ -207,7 +207,6 @@ window.onload = function () {
       tweenOpacity(0, 500, activateText, () => {
         visibleFalse(activateText);
       });
-      // console.log("oi");
     };
 
     // count moons
@@ -271,7 +270,6 @@ window.onload = function () {
           radians(24);
 
         const rotationAngle = 360 - degrees(angle);
-        // console.log(child.title, rotationAngle, degrees(angle));
 
         let r = levelTwoRadius;
         let x = r * Math.cos(angle);
