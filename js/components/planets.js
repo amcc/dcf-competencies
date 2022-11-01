@@ -9,6 +9,8 @@ import {
   hideCompetencies,
   visibleFalse,
 } from "./paperUtilities.js";
+import { competencies } from "../data.js";
+
 import { SystemBody } from "./elements.js";
 
 let labelSpacing = 90;

@@ -169,9 +169,9 @@ window.onload = function () {
 
     levelTwo = LevelGroup(0, 0, "levelTwo", levelOne);
     levelThree = LevelGroup(0, 0, "levelThree", levelOne);
-    levelThree.visible = false;
+    // levelThree.visible = false;
 
-    levelThree.opacity = 0;
+    // levelThree.opacity = 0;
 
     scaleObjects = [dash1, dash2, dash3, levelOne, background];
 
@@ -403,6 +403,7 @@ window.onload = function () {
       currentBody: null,
     };
 
+    hideCompetencies(levelOne);
     // everything.scale(everythingScale);
   }
 };
